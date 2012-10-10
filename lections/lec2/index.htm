@@ -1,0 +1,611 @@
+<!DOCTYPE HTML>
+<html lang="ru-RU">
+<head>
+	<title>HTML5 Введение. Семантика и разметка.</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=1274, user-scalable=no">
+	<link rel="stylesheet" href="../../shower/themes/ribbon/styles/style.css">
+	<!--
+		Для оформления отдельный слайдов, используйте
+		ID слайда для доступа к необходимым элементам
+		-->
+	<style>
+        /* Cover */        
+        #Cover section {
+            background-color: #0092bf;
+        }
+		#Cover h2 {
+			color:#FFF;
+			text-align:center;
+			font-size:70px;
+            position: absolute; 
+            top: 240px; 
+            left: 380px;
+        }        
+        #Cover img {
+            position: absolute; 
+            left: 200px; 
+            top: 150px;
+            height: 340px;
+        }
+        
+        #Html5 p {
+            font-size: 30px;
+        }
+        
+        #Technologies img {
+            height: 440px;
+            margin-top: -50px;
+            margin-left: 70px;
+        }
+        
+        #Support  iframe {
+            height: 680px;
+            width: 1040px; 
+            position: absolute;             
+            left: 0;
+            top: 0;            
+            margin-top: -20px;
+        }
+        
+        #History ul {
+            margin-top: -50px;            
+        }
+        
+        #History ul li {
+            line-height: 1.7;
+        }
+                
+        
+        #Demos ul {
+            margin-top: -40px;
+        }
+
+        #WhatToRead ul > li:before, #WhatToRead a[target="_blank"]:after  {
+            content: normal;
+        }
+
+        #WhatToRead a {
+            border-bottom: 0;
+        }
+        
+        #WhatToRead ul li {
+            float: left;            
+        }
+
+        #WhatToRead ul li img {
+            height: 300px;
+        }
+        
+        #WhatToRead ul li:nth-child(2), #WhatToRead ul li:nth-child(3)  {
+           padding-left: 15px;
+        } 
+
+        #WhatToRead2 ul li img {
+            height: 300px;
+        }
+        
+		#FitToWidth h2,
+		#FitToHeight h2 {
+			color:#FFF;
+			text-align:center;
+			}
+	</style>
+</head>
+<body class="list">
+	<header class="caption">
+		<h1>HTML5 Введение. Семантика и разметка.</h1>
+		<p>Евгений Курбатов, Moneta.ru</p>
+	</header>
+    
+	<div class="slide cover" id="Cover">
+        <div>
+		    <section>
+                <header>
+                    <h2>Введение.<br>Семантика и разметка.</h2>
+                </header>
+                <img src="pictures/html5.png" alt="">						
+		    </section>
+	    </div>
+    </div>
+
+    <div class="slide" id="Html5">
+    <div>
+        <section>
+            <header>
+                <h2>Что такое HTML5?</h2>
+            </header>
+            <p><b>HTML*</b> (HyperText Markup Language) - язык гипертекстовой разметки, основная технология Web.</p>
+            <p><b>HTML5</b> - новая версия стандарта HTML, находится в стадии разработки с 2004 года, основной документ <a href="http://dev.w3.org/html5/spec/">dev.w3.org/html5/spec</a></p>            
+        </section>
+    </div>
+    </div>
+    
+	<div class="slide" id="Technologies">
+        <div>
+		    <section>
+			    <header>
+				    <h2>HTML5 - "коктель" технологий и стандартов</h2>
+			    </header>
+			    <img src="pictures/tech.png">
+		    </section>
+	    </div>
+    </div>
+    
+    <div class="slide" id="History">
+        <div>
+            <section>
+                <header>
+                    <h2>Немного истории...</h2>
+                </header>
+                <ul>
+                    <li><b>2004</b> - Рабочая группа <a href="http://ru.wikipedia.org/wiki/WHATWG">WHATWG</a> начала работу над новым стандартом</li>
+                    <li><b>2006</b> - W3C решает прекратить работу на XHTML и объединить усилия совмество с "WHAT" над HTML5</li>
+                    <li><b>2008</b> - Опубликована первая версия</li>
+                    <li><b>Конец 2008</b> - Броузеры начинают поддерживать стандарт</li>
+                    <li><b>Сентябрь 2011</b> - 34% Alexa's Top-100 используют HTML5</li>
+                    <li><b>Ноябрь 2011</b> - Adobe прекращает поддержку Flash для мобильных устройств</li>
+                    <li><b>2014</b> - запланирован релиз окончательной версии</li>
+                </ul>
+                
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="Principles">
+        <div>
+            <section>
+                <header>
+                    <h2>Принципы HTML5</h2>
+                </header>
+                <ul>
+                    <li>Обратная совместимость</li>
+                    <li>Обработка ошибок правильности построения</li>
+                    <li>Практическое использование</li>
+                    <li>Точно определенное поведение</li>
+                    <li>Следует избегать профиля конкретного устройства</li>
+                    <li>Доступность</li>
+                    <li>Открытый процесс</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+    
+    <div class="slide" id="Featuries">
+        <div>
+            <section>
+                <header>
+                    <h2>Новые возможности</h2>
+                </header>
+                <ul>
+                    <li>Более содержательная разметка</li>
+                    <li>Мультимедийные возможности без зависимости от плагинов</li>
+                    <li>Передача инфорации между доменами</li>
+                    <li>Web Sockets</li>
+                    <li>Хранение данных на стороне клиента</li>
+                    <li>Улучшение интерфейса и работы с формами</li>
+                    <li>Улучшение доступности</li>
+                    <li>Расширенные селекторы, визуальные эффекты</li>
+                </ul>                
+            </section>
+        </div>
+    </div>
+    
+    <div class="slide" id="Support">
+        <div>
+            <section>                
+                <iframe src="http://html5readiness.com/" style=""></iframe>                
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="Platforms">
+        <div>
+            <section>
+                <header>
+                    <h2>Мультиплатформенность</h2>
+                </header>
+                <img src="pictures/html5-web.jpg" style="position: absolute; top: 0; left: 15px;">
+            </section>            
+        </div>
+    </div>
+
+    <div class="slide" id="Platforms2">
+        <div>
+            <section>
+                <header>
+                    <h2>Мультиплатформенность</h2>
+                </header>
+                <img src="pictures/html5-mobile.jpg" style="position: absolute; top: 0; left: 15px;">
+            </section>            
+        </div>
+    </div>
+
+    <div class="slide" id="Salary">
+        <div>
+            <section>
+                <header>
+                    <h2>Сколько стоит frontend-разарботчик?</h2>
+                </header>
+                <iframe border="0" frameborder="0" style="border: 0" src="http://rabota.yandex.ru/salary-blog.xml?type=3&text=javascript%20%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%87%D0%B8%D0%BA&text=%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%81%D1%82%20php&text=java%20%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%81%D1%82&text=python%20%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%81%D1%82&text=flash%20%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%81%D1%82&text=c%2B%2B%20%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%81%D1%82&rid=213&currency=RUR" width="800" height="294"></iframe>
+            </section>
+        </div>
+    </div>
+    
+	<div class="slide" id="Demos">
+        <div>
+		    <section>
+			    <header>
+				    <h2>Примеры приложений</h2>
+			    </header>
+			    <ul>
+                    <li><a href="http://disneydigitalbooks.go.com/tron/" target="_blank">Tron (HTML5 Canvas)</a></li>
+                    <li><a href="http://www.nevermindthebullets.com" target="_blank">Never Mind the Bullets (CSS3, parallax)</a></li>
+                    <li><a href="http://bartaz.github.com/impress.js/" target="_blank">impress.js</a></li>
+                    <li><a href="http://www.cuttherope.ie/" target="_blank">Cut the rope (Game)</a></li>
+                    <li><a href="http://triggerrally.com/x/Alpina/ArbusuG/drive" target="_blank">Trigger Rally (Game)</a></li>
+                    <li><a href="http://azathioprine.digisnap.bplaced.net/index.html" target="_blank">Alcatraz Azathioprine</a></li>
+                    <li><a href="http://madebyevan.com/webgl-water/" target="_blank">WebGL Water</a></li>
+                    <li><a href="http://webglsamples.googlecode.com/hg/aquarium/aquarium.html" target="_blank">WebGL Aquarium</a></li>
+			    </ul>
+		    </section>
+	    </div>
+    </div>
+              
+        <!-- Старые теги и тарибуты -->        
+
+        <!-- Проверка на валидность -->                  
+
+    <div class="slide cover" id="SemanticsCover">
+        <div>
+            <section>
+                <header>
+                    <h2>Семантика</h2>
+                </header>                
+                <img src="pictures/semantics.png">                
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="SemanticMarkup">
+        <div>
+            <section>
+                <header>
+                    <h2>Семантическая разметка</h2>
+                </header>
+                <p></p>
+                <ul>
+                    <li>Семантическая разметка упрощает понимание смысла и контекста информации, размещенной на странице, - как для машин, так и для людей</li>
+                    <li>Тэги не должны определять отбражение</li>
+                    <li>Главная цель тегов - смысловая нагрузка</li>
+                    <li>Разрешены перекрывающие тэги</li>                    
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="NewSemanticTags">
+        <div>
+            <section>
+                <header>
+                    <h2>Новые структурные теги</h2>
+                </header>                
+                <table style="margin-top: -45px;">
+                    <tr>
+                        <td><code><mark>&lt;header&gt;</mark></code></td>
+                        <td> - Определение заголовка страницы или раздела</td>
+                    </tr>
+                    <tr>
+                        <td><code><mark>&lt;footer&gt;</mark></code></td>
+                        <td> - Определение завершителя страницы или раздела</td>
+                    </tr>
+                    <tr>
+                        <td><code><mark>&lt;nav&gt;</mark></code></td>
+                        <td> - Определение области навигации страницы или раздела</td>
+                    </tr>
+                    <tr>
+                        <td><code><mark>&lt;section&gt;</mark></code></td>
+                        <td> - Определение логической области страницы или группировка контента</td>
+                    </tr>
+                    <tr>
+                        <td><code><mark>&lt;articel&gt;</mark></code></td>
+                        <td> - Определение статьи (логически завершенного блока контента)</td>
+                    </tr>
+                    <tr>
+                        <td><code><mark>&lt;aside&gt;</mark></code></td>
+                        <td> - Определение вторичного или связанного контента</td>
+                    </tr>
+                </table>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="NewSemanticTags2">
+        <div>
+            <section>
+                <header>
+                    <h2>Новые структурные теги</h2>
+                </header>
+                <table style="margin-top: -45px;">
+                    <tr>
+                        <td><code><mark>&lt;hgroup &gt;</mark></code></td>
+                        <td> - Группировка нескольких заголовочных элементов (h1 - h6) в единый блок</td>
+                    </tr>
+                    <tr>
+                        <td><code><mark>&lt;figure&gt; и &lt;figurecapture &gt;</mark></code></td>
+                        <td> - Вставка дополнительного контента: схем, видео, картинок(с подписью)</td>
+                    </tr>
+                </table>
+            </section>
+        </div>
+    </div>
+    
+    <div class="slide" id="HTML4Layout">
+        <div>
+            <section>
+                <header>
+                    <h2>Структура документа HTML4</h2>
+                </header>
+                <p>
+                    <img src="pictures/HTML4-page-layout.png" style="height: 380px; margin-top: -40px;">
+                </p>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="HTML5Layout">
+        <div>
+            <section>
+                <header>
+                    <h2>Структура документа HTML5</h2>
+                </header>
+                <p>
+                    <img src="pictures/HTML5-page-layout.png" style="height: 380px; margin-top: -40px;">
+                </p>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="StructureExample">
+        <div>
+            <section>
+                <header>
+                    <h2>Пример</h2>
+                </header>
+                <pre style="margin-top: -30px; font-size: 12px;">
+                    <code><mark>&lt;!doctype html></mark></code>
+                    <code>&lt;html></code>
+                    <code>  &lt;head></code>
+                    <code>    &lt;meta charset=<mark>utf-8</mark>></code>
+                    <code>    &lt;title>(Это title) Пример страницы на HTML5&lt;/title></code>
+                    <code>  &lt;/head></code>                    
+                    <code>  &lt;body></code>
+                    <code>    &lt;header></code>
+                    <code>      &lt;hgroup></code>
+                    <code>        &lt;h1>Заголовок "h1" из hgroup&lt;/h1></code>
+                    <code>        &lt;h2>Заголовок "h2" из hgroup&lt;/h2></code>
+                    <code>      &lt;/hgroup></code>
+                    <code>    &lt;/header></code>
+                    <code>    &lt;nav></code>
+                    <code>      &lt;a href=link1.html>Первая ссылка из блока "nav"&lt;/a></code>
+                    <code>      &lt;a href=link2.html>Вторая ссылка из блока "nav"&lt;/a></code>
+                    <code>    &lt;/nav></code>                    
+                </pre>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="StructureExample2">
+        <div>
+            <section>
+                <header>
+                    <h2>Пример</h2>
+                </header>
+                <pre style="margin-top: -30px; font-size: 12px;">
+                    <code>    &lt;section></code>
+                    <code>      &lt;article></code>
+                    <code>        &lt;h1>Заголовок статьи из блока "article"&lt;/h1></code>
+                    <code>        &lt;p>Текст абзаца статьи из блока "article"&lt;/p></code>
+                    <code>          &lt;details></code>
+                    <code>            &lt;summary>Блок "details", текст тега "summary"&lt;/summary></code>
+                    <code>            &lt;p>Абзац из блога "details"&lt;/p></code>
+                    <code>          &lt;/details></code>
+                    <code>       &lt;/article></code>
+                    <code>    &lt;/section></code>
+                    <code>    &lt;footer></code>
+                    <code>      &lt;p>Содержимое абзаца из блока "footer"&lt;/p></code>
+                    <code>    &lt;/footer></code>
+                    <code>  &lt;/body></code>
+                    <code>&lt;/html></code>                                               
+                </pre>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="NewContentTags">
+        <div>
+            <section>
+                <header>
+                    <h2>Контентные тэги</h2>
+                </header>                
+                <img style="float: left;height: 275px;" src="pictures/contentTags1.png">
+                <img style="float: left;height: 275px;" src="pictures/contentTags2.png">
+            </section>
+        </div>
+    </div>
+    
+    <div class="slide" id="HTMLShiv">
+        <div>
+            <section>
+                <header>
+                    <h2>А если элементы не поддерживаются?</h2>
+                </header>                
+                <pre style="margin-top: -30px; font-size: 20px;">
+                    <code><mark>&lt;!--[if lt IE 9]&gt;</mark></code>
+                    <code>&lt;script type="text/javascript"&gt;</code>
+                    <code>    document.createElement("nav");</code>
+                    <code>    document.createElement("header");</code>
+                    <code>    document.createElement("footer");</code>
+                    <code>    document.createElement("section");</code>                    
+                    <code>&lt;/script&gt;</code>
+                    <code>&lt;![endif]--&gt;</code>
+                </pre>      
+                <p style="margin-top: -35px;"><a href="http://code.google.com/p/html5shiv/">http://code.google.com/p/html5shiv/</a></p>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="DataAttributes">
+        <div>
+            <section>
+                <header>
+                    <h2>Пользовательские атрибуты данных</h2>
+                </header>             
+                <p>Возможность  включения пользовательских данных в любой элемент с использованием схемы data-*</p>
+                <p style="margin-top: -30px;">Чтение с помощью JavaScript getAttribute()</p>
+                <pre style="margin-top: -30px; font-size: 15px;">
+                    <code>&lt;a class="popup" <mark>data-width="600"</mark> <mark>data-height="400"</mark>>Test-project&lt;/a></code><br> 
+                    <code>$(".popup").click(function(event){</code>                        
+                    <code>    var width = $(this).attr("data-width");</code>                        
+                    <code>    var height = $(this).attr("data-height");</code>                        
+                    <code>    ...</code>                        
+                    <code>});</code>                        
+                </pre>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="Microdata">
+        <div>
+            <section>
+                <header>
+                    <h2>Microdata</h2>
+                </header>
+                <p><b>Микроданные</b> - способ семантически размечать сведения о разнообразных сущностях (событиях, организациях, людях, товарах и так далее)</p>
+                <ul>
+                    <li>набор пар ключ-значение, добавленных в документ параллельно основному контенту</li>
+                    <li>нацелено на автоматизированные парсеры (напр., поисковые роботы)</li>                    
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="MicrodataExample">
+        <div>
+            <section>
+                <header>
+                    <h2>Пример</h2>
+                </header>
+                 <pre style="margin-top: -30px; font-size: 15px;">
+                    <code>&lt;section <mark>itemscope</mark> <mark>itemtype="http://data-vocabulary.org/Person"</mark>></code> 
+                    <code>  Hello, my name is &lt;span <mark>itemprop="name"</mark>>Vladimir Muzhanovskij&lt;/span></code>                        
+                    <code>  I am a &lt;span <mark>itemprop="job"</mark>> manager &lt;/span></code>                        
+                    <code>  from great company &lt;span <mark>itemprop="company"</mark>>System-Plus&lt;/span>.</code>                        
+                    <code>  My friends call me &lt;span <mark>itemprop="nickname</mark>">Vovan&lt;/span>.</code>                        
+                    <code>  You can visit my homepage at &lt;a href="http://www.cuct.ru" <mark>itemprop="url"</mark>>www.cuct.ru&lt;/a>.</code>                        
+                    <code>  &lt;section <mark>itemprop="address" itemscope itemtype="http://data-vocabulary.org/Address"</mark>></code>                        
+                    <code>    I live at &lt;span <mark>itemprop="street-address"</mark>>2/3 Tramvainaya&lt;/span> </code>                        
+                    <code>    &lt;span <mark>itemprop="city"</mark>>Ufa&lt;/span>, &lt;span <mark>itemprop="region"</mark>>Russia&lt;/span>.</code>                        
+                    <code>   &lt;/section></code>                        
+                    <code>&lt;/section></code>                        
+                </pre>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="NewInputTypes">
+        <div>
+            <section>
+                <header>
+                    <h2>Новые типы полей ввода</h2>
+                </header>
+                <ul style="margin-top: -55px;">
+                    <li>range</li>
+                    <li>search</li>
+                    <li>color</li>
+                    <li>email</li>
+                    <li>url</li>
+                    <li>date</li>
+                    <li>time</li>
+                    <li>tel и другие</li>
+                </ul>
+                <p style="margin-top: -45px;">Спецификация НЕ описывает как они должны отбражаться</p>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="NewInputTypesExample">
+        <div>
+            <section>
+                <header>
+                    <h2>Пример</h2>
+                </header>
+                <form style="margin-top: -45px;" method="GET">
+                    Число из интервала: <input type='range' min='0' max='100' step='10' value='10'/><br/>
+                    Целое число: <input type='number' min='-100' max='100' step='1' value='10'/><br/>                    
+                    Дата: <input type='date'/><br/>                    
+                    Цвет: <input type='color'/><br/>                    
+                    email:<input type='email' value='@domain.ru' required=/><br/>
+                    <input type='submit' value='Подтвердить'/>
+                </form>                
+            </section>
+        </div>
+    </div>
+    
+    <div class="slide" id="WhatToRead">
+        <div>
+            <section>
+                <header>
+                    <h2>Литература</h2>
+                </header>
+                <ul>
+                    <li><a href="http://www.ozon.ru/context/detail/id/7339528/" target="_blank"><img src="pictures/html5andcss.jpg"></a></li>
+                    <li><a href="http://www.ozon.ru/context/detail/id/5914165/" target="_blank"><img src="pictures/html5pro.jpg"></a></li>
+                    <li><a href="http://www.amazon.com/HTML5-Canvas-Steve-Fulton/dp/144939390X/" target="_blank"><img src="pictures/html5canvas.jpg"></a></li>
+                </ul>                
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="WhatToRead2">
+        <div>
+            <section>
+                <header>
+                    <h2>Литература & ссылки</h2>
+                </header>
+                <div style="float: left;">
+                    <a href="http://www.amazon.com/gp/product/0321784421/" target="_blank"><img src="pictures/html5intro.jpg" height="300px"></a>
+                </div>
+                <div style="float: left; margin-left: 80px;">
+                    <ul>
+                        <li><a href="http://www.html5rocks.com/">http://www.html5rocks.com/</a></li>
+                        <li><a href="http://html5demos.com/">http://html5demos.com/</a></li>
+                        <li><a href="http://html5test.com/">http://html5test.com/</a></li>
+                        <li><a href="http://html5doctor.com/">http://html5doctor.com/</a></li>                                                
+                    </ul>
+                </div>                    
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="ThankYou"><div>
+		<section>
+			<header>Контакты</header>
+			<p>Евгений Курбатов, Moneta.ru</p>
+			<ul>				
+				<li><a href="http://twitter.com/eugenixus">twitter.com/eugenixus</a></li>
+				<li><a href="mailto:eugene.kurbatov@gmail.com">eugene.kurbatov@gmail.com</a>, указать [asm] в теме</li>
+			</ul>			
+            <h2><code><mark>&lt;/thanks&gt;</mark></code></h2>
+		</section>
+	    </div>
+    </div>        
+    
+	<!--
+		Для того, чтобы убрать индикатор прогресса
+		из презентации, просто удалите элемент «progress».
+		-->
+	<div class="progress"><div></div></div>
+	<script src="../../shower/scripts/script.js"></script>	
+</body>
+</html>
