@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>TweetFeed</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 60px;
+        }
+    </style>
+    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="#">TweetFeed</a>
+            <div class="nav-collapse collapse">
+                <nav class="nav">                    
+                    <li class="active"><a href="#">Timeline</a></li>                    
+                    <li><a href="#contact">Contact</a></li>                    
+                </nav>
+            </div><!--/.nav-collapse -->
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="page-header">
+        <h1 contenteditable="true">Home</h1>
+    </div>   
+
+    <div class="row">
+        <div class="span2">
+            <div class="btn-group pull-right" data-toggle="buttons-radio">
+                <button class="btn active">Name</button>
+                <button class="btn">ID</button>
+            </div>
+        </div>
+        <div class="span4">
+            <form class="form-search">
+                <div class="input-append">
+                    <input class="span2" id="userName" size="16" type="text" placeholder="Enter username here" required autofocus>
+                    <button class="btn btn-primary" type="submit" id="getTweets"><i class="icon-search icon-white"></i>Get tweets</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <section id="tweets"></section>            
+
+</div> <!-- /container -->
+
+<!-- item template -->
+<div id="tweetItem" class="row" style="display: none;">
+    <div class="span8">
+        <div class="row">
+            <div class="span8">
+                <h4><strong>tweeted by <a href="#" id="screenName">@author</a></strong></h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span1">
+                <a href="#">
+                    <img id="profileImage" class="img-rounded" src="" height="70" width="70" alt="">
+                </a>
+            </div>
+            <div class="span6">
+                <p id="text"></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span6">
+                <p class="pull-right"><i class="icon-calendar"></i><span id="time"></span></p>
+            </div>
+        </div>
+    </div>
+</div>
+<hr class="span7">
+
+
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="bootstrap/js/jquery.js"></script>
+<script src="bootstrap/js/bootstrap-transition.js"></script>
+<script src="bootstrap/js/bootstrap-alert.js"></script>
+<script src="bootstrap/js/bootstrap-modal.js"></script>
+<script src="bootstrap/js/bootstrap-dropdown.js"></script>
+<script src="bootstrap/js/bootstrap-scrollspy.js"></script>
+<script src="bootstrap/js/bootstrap-tab.js"></script>
+<script src="bootstrap/js/bootstrap-tooltip.js"></script>
+<script src="bootstrap/js/bootstrap-popover.js"></script>
+<script src="bootstrap/js/bootstrap-button.js"></script>
+<script src="bootstrap/js/bootstrap-collapse.js"></script>
+<script src="bootstrap/js/bootstrap-carousel.js"></script>
+<script src="bootstrap/js/bootstrap-typeahead.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $("#getTweets").click(function() {
+            var userName = $("#userName").val();
+            
+            var params = {
+                include_entities: true,
+                include_rts: true,
+                screen_name: userName,
+                count: 10
+            }; 
+            
+            $.ajax({
+                type: "GET",
+                url: "https://api.twitter.com/1/statuses/user_timeline.json",                
+                data: params,
+                cache: false,
+                dataType: "jsonp",
+                success: function(data) {
+                    for (var i in data) {
+                        var item = $("#tweetItem").clone();
+                        $("#screenName").text(data[i].user.screen_name);
+                        $("#time").text(data[i].created_at);
+                        $("#text").text(data[i].text);
+                        $("#profileImage").attr("src", data[i].user.profile_image_url);                                                
+                        console.log(data[i].id);                                                                         
+                        item.show();
+                        $("section#tweets").append(item);
+                    }
+                },
+                error: function(req, status, error) {
+                    alert('error: ' + status);
+                }
+            });
+            
+//            $.get("https://api.twitter.com/1/statuses/user_timeline.json", params,                
+//                function(data) {                
+//                    console.log(data);
+//                    alert('Load was performed.');
+//                }, "json"
+//            );
+        });
+    })
+            
+</script>
+
+</body>
+</html>
