@@ -5,6 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=1274, user-scalable=no">
 	<link rel="stylesheet" href="../../shower/themes/ribbon/styles/style.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 	<!--
 		Для оформления отдельный слайдов, используйте
 		ID слайда для доступа к необходимым элементам
@@ -12,89 +13,57 @@
 	<style>
         /* Cover */        
         #Cover section {
-            background-color: #0092bf;
+            background-color: #ffffff;
         }
 		#Cover h2 {
-			color:#FFF;
+			/*color:#FFF;*/
 			text-align:center;
-			font-size:70px;
-            position: absolute; 
-            top: 240px; 
-            left: 380px;
+			font-size:70px;                                    
         }        
         #Cover img {
             position: absolute; 
-            left: 200px; 
-            top: 150px;
-            height: 340px;
-        }
-        
-        #Html5 p {
-            font-size: 30px;
-        }
-        
-        #Technologies img {
-            height: 440px;
-            margin-top: -50px;
-            margin-left: 70px;
-        }
-        
-        #Support  iframe {
-            height: 680px;
-            width: 1040px; 
-            position: absolute;             
-            left: 0;
-            top: 0;            
-            margin-top: -20px;
-        }
-        
-        #History ul {
-            margin-top: -50px;            
-        }
-        
-        #History ul li {
-            line-height: 1.7;
-        }
-                
-        
-        #Demos ul {
-            margin-top: -40px;
-        }
-
-        #WhatToRead ul > li:before, #WhatToRead a[target="_blank"]:after  {
-            content: normal;
-        }
-
-        #WhatToRead a {
-            border-bottom: 0;
-        }
-        
-        #WhatToRead ul li {
-            float: left;            
-        }
-
-        #WhatToRead ul li img {
+            left: 500px; 
+            top: 240px;
             height: 300px;
         }
-        
-        #WhatToRead ul li:nth-child(2), #WhatToRead ul li:nth-child(3)  {
-           padding-left: 15px;
-        } 
 
-        #WhatToRead2 ul li img {
-            height: 300px;
+
+        #Geolocation2 section table:nth-child(1) {
+            height: 300px; float: left;
+        }
+
+        #Geolocation2 section table:nth-child(2) {
+            height: 300px; float: right;
         }
         
-		#FitToWidth h2,
-		#FitToHeight h2 {
-			color:#FFF;
-			text-align:center;
-			}
+        #Geolocation2 table td {
+            vertical-align: middle;
+        }
+
+        #Geolocation2 table td img {
+            height: 60px;
+            padding-right: 10px;
+        }
+
+        #CoverGeolocation section {
+            background-color: #ffffff;
+        }
+
+        #CoverGeolocation img {
+            height: 400px;
+            margin-top: 180px;
+        }
+        
+        #CoverGeolocation h2 {
+            text-align:center;
+            font-size:70px;
+        }
+        
 	</style>
 </head>
 <body class="list">
 	<header class="caption">
-		<h1>HTML5 Введение. Семантика и разметка.</h1>
+		<h1>HTML5. Новые API.</h1>
 		<p>Евгений Курбатов, Moneta.ru</p>
 	</header>
     
@@ -102,18 +71,423 @@
         <div>
 		    <section>
                 <header>
-                    <h2>Введение.<br>Семантика и разметка.</h2>
+                    <h2>HTML5. Новые API.</h2>
                 </header>
-                <img src="pictures/html5.png" alt="">						
+                <img src="pictures/html5-apis.jpg" alt="">						
 		    </section>
 	    </div>
     </div>
-   
-	<!--
-		Для того, чтобы убрать индикатор прогресса
-		из презентации, просто удалите элемент «progress».
-		-->
+    
+    <div class="slide" id="Plan">
+        <div>
+            <section>
+                <header>
+                    <h2>План</h2>
+                </header>                
+                <ul>
+                    <li>Geolocation API</li>
+                    <li>Drag & Drop</li>
+                    <li>Local storage</li>
+                </ul>                
+            </section>
+        </div>
+    </div>
+
+    <div class="slide cover" id="CoverGeolocation">
+        <div>
+            <section>
+                <header>
+                    <h2>Geolocation API</h2>
+                </header>
+                <img src="pictures/geolocation.png" alt="">
+            </section>
+        </div>
+    </div>
+    
+    <div class="slide" id="Geolocation">
+        <div>
+            <section>
+                <header>
+                    <h2>Geolocation API</h2>
+                </header>
+                <p><b>Geolocation (геопозиционирование)</b> - определение текущего местоположения пользователя</p>
+                <ul style="margin-top: -40px;">
+                    <li>Выдача контента в соответствии с местоположением пользователя (геотаргетинг)</li>
+                    <li>Обновление информации на странице по мере перемещения пользователя</li>
+                    <li>Составление маршрутов от точки до точки</li>
+                    <li>Геометки в социальных сетях</li>                    
+                </ul>                
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="Geolocation1">
+        <div>
+            <section>
+                <header>
+                    <h2>Geolocation API</h2>
+                </header>
+                <ul>
+                    <li>Высокоуровневый интерфейс</li>
+                    <li>Не зависит от устройства</li>
+                    <li>Не зависит источника информации</li>
+                    <li>Местоположение определяется на основании IP-адреса, MAC-адреса, координат точки доступа WiFi, GPS, GSM/CDMA идентификаторы и т.д.</li>
+                    <li>Информация о местоположении представлена широтой(latitude) и долготой(longtitude).</li>                    
+                </ul>
+            </section>
+        </div>
+    </div>
+
+
+    <div class="slide" id="Geolocation9">
+        <div>
+            <section>
+                <header>
+                    <h2>Geolocation API</h2>
+                </header>
+                <ul>                    
+                    <li>Предоставление данных о метоположении опционально (согласие пользователя)</li>
+                    <li>Требуется подключение к интернету</li>
+                    <li>Спецификация <a href="http://www.w3.org/TR/geolocation-API/">http://www.w3.org/TR/geolocation-API/</a></li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="Geolocation10">
+        <div>
+            <section>
+                <header>
+                    <h2>Geolocation API. Источники</h2>
+                </header>
+                <ol>
+                    <li><b>IP</b> (точность на уровне города, server-side, широкая доступность)</li>
+                    <li><b>Триангуляция</b>                    
+                        <ul>
+                            <li>GPS ~10 м</li>
+                            <li>Wi-Fi ~20 м</li>
+                            <li>A-GPS, Базовые станции (Вышки) ~1000 м</li>
+                        </ul>
+                    </li>                    
+                </ol>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="Geolocation2">
+        <div>
+            <section>
+                <header>
+                    <h2>Geolocation API. Поддержка.</h2>
+                </header>
+                <table>
+                    <tr>
+                        <td><img src="pictures/ie.png"></td>
+                        <td>Internet Explorer 9+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/ff.png"></td>
+                        <td>Firefox 3.5+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/chrome.png"></td>
+                        <td>Chrome 5+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/opera.png"></td>
+                        <td>Opera 10.6+</td>
+                    </tr>                             
+                </table>
+                <table>                   
+                    <tr>
+                        <td><img src="pictures/safari.png"></td>
+                        <td>Safari 5+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/ios.png"></td>
+                        <td>iPhone 3+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/android.png"></td>
+                        <td>Android 2+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/winphone.png"></td>
+                        <td>Windows Phone 7.5+</td>
+                    </tr>
+                </table>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="Geolocation3">
+        <div>
+            <section>
+                <header>
+                    <h2>Geolocation API</h2>
+                </header>
+                 <pre>
+                    <code>&lt;script&gt;</code>
+                    <code>if (window.navigator.<mark>geolocation</mark>) {</code>
+                    <code>     // do some geolocation stuff</code>
+                    <code>} else {</code>
+                    <code>     // the browser does not natively support geolocation</code>
+                    <code>}</code>
+                    <code>&lt;/script&gt;</code>
+                </pre>
+            </section>           
+        </div>
+    </div>
+
+    <div class="slide" id="Geolocation4">
+        <div>
+            <section>
+                <header>
+                    <h2>Geolocation API. Методы.</h2>                    
+                </header>
+                <ul>
+                    <li>getCurrentPosition(successCallback, [errorCallback, [options]])</li>
+                    <li>watchPosition(successCallback, [errorCallback, [options]])</li>
+                    <li>clearWatch(watchId)</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="Geolocation5">
+        <div>
+            <section>
+                <header>
+                    <h2>Geolocation API. Пример.</h2>
+                </header>
+                <pre style="font-size: 16px;">                    
+                    <code>if (navigator.geolocation) {</code>
+                    <code>    navigator.geolocation.getCurrentPosition(</code>                                
+                    <code>        // successCallback</code>
+                    <code>        function(<mark>position</mark>) {</code>
+                    <code>            var latLng = new google.maps.LatLng(</code>
+                    <code>                <mark>position.coords.latitude</mark>,</code>
+                    <code>                <mark>position.coords.longitude</mark></code>
+                    <code>            );</code>
+                    <code>            var marker = new google.maps.Marker({position: latLng, map: map});</code>                
+                    <code>            map.setCenter(latLng);</code>                    
+                    <code>        },</code>                                  
+                </pre>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="Geolocation6">
+        <div>
+            <section>
+                <header>
+                    <h2>Geolocation API. Пример.</h2>
+                </header>
+                <pre style="font-size: 16px; margin-top: -35px;">         
+                    <code>        // errorCallback</code>
+                    <code>        function(e) {</code>
+                    <code>            switch (e.code) {</code>
+                    <code>                case e.PERMISSION_DENIED:</code>
+                    <code>                    alert("Permission denied");</code>
+                    <code>                    break;</code>
+                    <code>                case e.POSITION_UNAVAILABLE:</code>
+                    <code>                    alert("Position unavaliable");</code>
+                    <code>                    break;</code>
+                    <code>                case e.TIMEOUT:</code>                
+                    <code>                    alert("The application has timed out");</code>                                                     
+                    <code>                    break;</code>
+                    <code>                default:</code>
+                    <code>                    alert("There was a horrible Geolocation");</code>
+                    <code>            }</code>
+                    <code>        },</code>                                                                                       
+                </pre>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="Geolocation8">
+        <div>
+            <section>
+                <header>
+                    <h2>Geolocation API. Пример.</h2>
+                </header>
+                <pre style="font-size: 16px; margin-top: -35px;">
+                    <code>        // Options</code>
+                    <code>        { </code>
+                    <code>            enableHighAccuracy: true,</code> 
+                    <code>            timeout: 60000,</code> 
+                    <code>            maximumAge: 0</code> 
+                    <code>        }</code>
+                    <code>    );</code>
+                    <code>}</code>                    
+                </pre>
+            </section>
+        </div>
+    </div>
+    
+
+    <div class="slide" id="Geolocation7">
+        <div>
+            <section>
+                <style>
+                    #see-position {
+                        margin-bottom: 10px;
+                        height: 35px;
+                        width: 70px;
+                    }
+                    #geo-map {
+                        height: 280px;
+                        width: 640px;
+                    }
+                    #geo-log {
+                        background-color: red;
+                        color: white;
+                        padding: 5px;
+                        border-radius: 5px;
+                        visibility: hidden;
+                    }
+                </style>
+                
+                <header>
+                    <h2>Geolocation API. Пример.</h2>
+                </header>
+                <button id="see-position">Где я?</button> 
+                <span id="geo-log"></span>
+                <div id="geo-map">
+                    <img src="http://maps.google.com/maps/api/staticmap?center=37.4419,-94.1419&zoom=3&size=680x278&sensor=true"/>
+                </div>
+
+                <script>
+                    $(document).ready(function() {
+                        var map = null;
+                        var geolog = document.querySelector('#geo-log');
+                        var geoMap = document.querySelector('#geo-map');
+
+                        function showPosition(position) {                            
+                            geolog.textContent = 
+                                "Вы в радиусе " + position.coords.accuracy + 
+                                " метров (" + position.coords.latitude + ", " +
+                                position.coords.longitude + ")";                            
+                            
+                            var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                            var marker = new google.maps.Marker({position: latLng, map: map});
+                            map.setCenter(latLng);
+                            map.setZoom(15);
+                        }
+
+                        function handlePositionError(evt) {
+                            geolog.textContent = evt.message;
+                        }
+
+                        function successPositionHandler(evt) {                            
+                            if (!map) {
+                                map = new google.maps.Map(geoMap, {
+                                    zoom: 3,
+                                    center: new google.maps.LatLng(37.4419, -94.1419), // United States
+                                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                                });
+                                map.getDiv().style.border =  '1px solid #ccc';
+                            }
+
+                            if (navigator.geolocation) {
+                                geolog.style.visibility = 'visible';
+                                geolog.textContent = 'Поиск местоположения...';
+                                navigator.geolocation.getCurrentPosition(showPosition, handlePositionError);                         
+                            } else {
+                                geolog.textContent = 'Oops! Your browser does not support geolocation.';
+                            }
+                        }
+                        $('#see-position').click(successPositionHandler);                                          
+                    });
+                </script>
+
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="">
+        <div>
+            <section>
+                <header>
+                    <h2></h2>
+                </header>
+                <pre>
+                    interface PositionOptions {
+                        attribute boolean enableHighAccuracy;
+                        attribute long timeout;
+                        attribute long maximumAge;
+                    };
+                    
+                    interface Position {
+                        readonly attribute Coordinates coords;
+                        readonly attribute DOMTimeStamp timestamp;
+                    };
+                </pre>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="">
+        <div>
+            <section>
+                <header>
+                    <h2></h2>
+                </header>
+                <pre>
+                    interface Coordinates {
+                        readonly attribute double latitude;
+                        readonly attribute double longitude;
+                        readonly attribute double? altitude;
+                        readonly attribute double accuracy;
+                        readonly attribute double? altitudeAccuracy;
+                        readonly attribute double? heading;
+                        readonly attribute double? speed;
+                    };
+                </pre>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="">
+        <div>
+            <section>
+                <header>
+                    <h2></h2>
+                </header>
+                <pre>
+                    interface PositionError {
+                        const unsigned short PERMISSION_DENIED = 1;
+                        const unsigned short POSITION_UNAVAILABLE = 2;
+                        const unsigned short TIMEOUT = 3;
+                        readonly attribute unsigned short code;
+                        readonly attribute DOMString message;
+                    };
+                </pre>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="">
+        <div>
+            <section>
+                <header>
+                    <h2></h2>
+                </header>
+                <pre>
+                    watchPosition(successCallback, [errorCallback, [options]])
+                    clearWatch(watchId)
+                </pre>
+            </section>
+        </div>
+    </div>
+
+    <!--
+        Для того, чтобы убрать индикатор прогресса
+        из презентации, просто удалите элемент «progress».
+        -->
 	<div class="progress"><div></div></div>
-	<script src="../../shower/scripts/script.js"></script>	
+    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>    
+	<script src="../../shower/scripts/script.js"></script>
+
 </body>
 </html>
