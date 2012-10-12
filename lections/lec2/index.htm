@@ -9,87 +9,21 @@
 		Для оформления отдельный слайдов, используйте
 		ID слайда для доступа к необходимым элементам
 		-->
-	<style>
-        /* Cover */        
-        #Cover section {
-            background-color: #0092bf;
+	<style>                
+        #CoverFileAPI section {
+            background-color: #ffffff;
         }
-		#Cover h2 {
-			color:#FFF;
+		#CoverFileAPI h2 {			
 			text-align:center;
-			font-size:70px;
-            position: absolute; 
-            top: 240px; 
-            left: 380px;
+			font-size:70px;             
         }        
-        #Cover img {
+        #CoverFileAPI img {
             position: absolute; 
-            left: 200px; 
-            top: 150px;
+            left: 500px; 
+            top: 190px;
             height: 340px;
         }
         
-        #Html5 p {
-            font-size: 30px;
-        }
-        
-        #Technologies img {
-            height: 440px;
-            margin-top: -50px;
-            margin-left: 70px;
-        }
-        
-        #Support  iframe {
-            height: 680px;
-            width: 1040px; 
-            position: absolute;             
-            left: 0;
-            top: 0;            
-            margin-top: -20px;
-        }
-        
-        #History ul {
-            margin-top: -50px;            
-        }
-        
-        #History ul li {
-            line-height: 1.7;
-        }
-                
-        
-        #Demos ul {
-            margin-top: -40px;
-        }
-
-        #WhatToRead ul > li:before, #WhatToRead a[target="_blank"]:after  {
-            content: normal;
-        }
-
-        #WhatToRead a {
-            border-bottom: 0;
-        }
-        
-        #WhatToRead ul li {
-            float: left;            
-        }
-
-        #WhatToRead ul li img {
-            height: 300px;
-        }
-        
-        #WhatToRead ul li:nth-child(2), #WhatToRead ul li:nth-child(3)  {
-           padding-left: 15px;
-        } 
-
-        #WhatToRead2 ul li img {
-            height: 300px;
-        }
-        
-		#FitToWidth h2,
-		#FitToHeight h2 {
-			color:#FFF;
-			text-align:center;
-			}
 	</style>
 </head>
 <body class="list">
@@ -98,15 +32,35 @@
 		<p>Евгений Курбатов, Moneta.ru</p>
 	</header>
     
-	<div class="slide cover" id="Cover">
+	<div class="slide cover" id="CoverFileAPI">
         <div>
 		    <section>
                 <header>
-                    <h2>Введение.<br>Семантика и разметка.</h2>
+                    <h2>File API</h2>
                 </header>
-                <img src="pictures/html5.png" alt="">						
+                <img src="pictures/fileapi.jpg" alt="">						
 		    </section>
 	    </div>
+    </div>
+
+    <div class="slide cover" id="CoverDragAndDropAPI">
+        <div>
+            <section>
+                <header>
+                    <h2>Drag & drop</h2>
+                </header>                
+            </section>
+        </div>
+    </div>
+
+    <div class="slide cover" id="CoverLocalStorage">
+        <div>
+            <section>
+                <header>
+                    <h2>Local Storage</h2>
+                </header>
+            </section>
+        </div>
     </div>
    
 	<!--
