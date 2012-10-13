@@ -5,6 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=1274, user-scalable=no">
 	<link rel="stylesheet" href="../../shower/themes/ribbon/styles/style.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 	<!--
 		Для оформления отдельный слайдов, используйте
 		ID слайда для доступа к необходимым элементам
@@ -12,89 +13,87 @@
 	<style>
         /* Cover */        
         #Cover section {
-            background-color: #0092bf;
+            background-color: #ffffff;
         }
 		#Cover h2 {
-			color:#FFF;
+			/*color:#FFF;*/
 			text-align:center;
-			font-size:70px;
-            position: absolute; 
-            top: 240px; 
-            left: 380px;
+			font-size:70px;                                    
         }        
         #Cover img {
             position: absolute; 
-            left: 200px; 
-            top: 150px;
+            left: 500px; 
+            top: 240px;
+            height: 300px;
+        }
+
+        #Geolocation2 section table:nth-child(1),         
+        #FileAPISupport section table:nth-child(1) {
+            height: 300px; float: left;
+        }
+
+        #Geolocation2 section table:nth-child(2),        
+        #FileAPISupport section table:nth-child(2),
+        #LocalStorageSupport section table:nth-child(2) {
+            height: 300px; float: right;
+        }
+        
+        #Geolocation2 table td,
+        #SupportDragAndDropAPI table td,
+        #LocalStorageSupport table td,
+        #FileAPISupport table td {
+            vertical-align: middle;
+        }
+
+        #Geolocation2 table td img,
+        #SupportDragAndDropAPI table td img,
+        #LocalStorageSupport table td img,
+        #FileAPISupport table td img {
+            height: 60px;
+            padding-right: 10px;
+        }
+
+        #CoverGeolocation section {
+            background-color: #ffffff;
+        }
+
+        #CoverGeolocation img {
+            height: 400px;
+            margin-top: 180px;
+        }
+        
+        #CoverGeolocation h2 {
+            text-align:center;
+            font-size:70px;
+        }
+
+        #CoverFileAPI section {
+            background-color: #ffffff;
+        }
+        #CoverFileAPI h2 {
+            text-align:center;
+            font-size:70px;
+        }
+        #CoverFileAPI img {
+            position: absolute;
+            left: 500px;
+            top: 190px;
             height: 340px;
         }
         
-        #Html5 p {
-            font-size: 30px;
+        #ReadFileEvents table td, #EventsDragAndDropAPI table td, #EventsDragAndDropAPI2 table td {
+            padding-right: 25px;
         }
-        
-        #Technologies img {
-            height: 440px;
+
+        #ReadFileEvents table {
             margin-top: -50px;
-            margin-left: 70px;
         }
         
-        #Support  iframe {
-            height: 680px;
-            width: 1040px; 
-            position: absolute;             
-            left: 0;
-            top: 0;            
-            margin-top: -20px;
-        }
-        
-        #History ul {
-            margin-top: -50px;            
-        }
-        
-        #History ul li {
-            line-height: 1.7;
-        }
-                
-        
-        #Demos ul {
-            margin-top: -40px;
-        }
-
-        #WhatToRead ul > li:before, #WhatToRead a[target="_blank"]:after  {
-            content: normal;
-        }
-
-        #WhatToRead a {
-            border-bottom: 0;
-        }
-        
-        #WhatToRead ul li {
-            float: left;            
-        }
-
-        #WhatToRead ul li img {
-            height: 300px;
-        }
-        
-        #WhatToRead ul li:nth-child(2), #WhatToRead ul li:nth-child(3)  {
-           padding-left: 15px;
-        } 
-
-        #WhatToRead2 ul li img {
-            height: 300px;
-        }
-        
-		#FitToWidth h2,
-		#FitToHeight h2 {
-			color:#FFF;
-			text-align:center;
-			}
 	</style>
 </head>
 <body class="list">
 	<header class="caption">
-		<h1>HTML5 Введение. Семантика и разметка.</h1>
+		<h1>HTML5. Новые API.</h1>
 		<p>Евгений Курбатов, Moneta.ru</p>
 	</header>
     
@@ -102,509 +101,1027 @@
         <div>
 		    <section>
                 <header>
-                    <h2>Введение.<br>Семантика и разметка.</h2>
+                    <h2>HTML5. Новые API.</h2>
                 </header>
-                <img src="pictures/html5.png" alt="">						
-		    </section>
-	    </div>
-    </div>
-
-    <div class="slide" id="Html5">
-    <div>
-        <section>
-            <header>
-                <h2>Что такое HTML5?</h2>
-            </header>
-            <p><b>HTML*</b> (HyperText Markup Language) - язык гипертекстовой разметки, основная технология Web.</p>
-            <p><b>HTML5</b> - новая версия стандарта HTML, находится в стадии разработки с 2004 года, основной документ <a href="http://dev.w3.org/html5/spec/">dev.w3.org/html5/spec</a></p>            
-        </section>
-    </div>
-    </div>
-    
-	<div class="slide" id="Technologies">
-        <div>
-		    <section>
-			    <header>
-				    <h2>HTML5 - "коктель" технологий и стандартов</h2>
-			    </header>
-			    <img src="pictures/tech.png">
+                <img src="pictures/html5-apis.jpg" alt="">						
 		    </section>
 	    </div>
     </div>
     
-    <div class="slide" id="History">
+    <div class="slide" id="Plan">
         <div>
             <section>
                 <header>
-                    <h2>Немного истории...</h2>
-                </header>
+                    <h2>План</h2>
+                </header>                
                 <ul>
-                    <li><b>2004</b> - Рабочая группа <a href="http://ru.wikipedia.org/wiki/WHATWG">WHATWG</a> начала работу над новым стандартом</li>
-                    <li><b>2006</b> - W3C решает прекратить работу на XHTML и объединить усилия совмество с "WHAT" над HTML5</li>
-                    <li><b>2008</b> - Опубликована первая версия</li>
-                    <li><b>Конец 2008</b> - Броузеры начинают поддерживать стандарт</li>
-                    <li><b>Сентябрь 2011</b> - 34% Alexa's Top-100 используют HTML5</li>
-                    <li><b>Ноябрь 2011</b> - Adobe прекращает поддержку Flash для мобильных устройств</li>
-                    <li><b>2014</b> - запланирован релиз окончательной версии</li>
-                </ul>
-                
-            </section>
-        </div>
-    </div>
-
-    <div class="slide" id="Principles">
-        <div>
-            <section>
-                <header>
-                    <h2>Принципы HTML5</h2>
-                </header>
-                <ul>
-                    <li>Обратная совместимость</li>
-                    <li>Обработка ошибок правильности построения</li>
-                    <li>Практическое использование</li>
-                    <li>Точно определенное поведение</li>
-                    <li>Следует избегать профиля конкретного устройства</li>
-                    <li>Доступность</li>
-                    <li>Открытый процесс</li>
-                </ul>
-            </section>
-        </div>
-    </div>
-    
-    <div class="slide" id="Featuries">
-        <div>
-            <section>
-                <header>
-                    <h2>Новые возможности</h2>
-                </header>
-                <ul>
-                    <li>Более содержательная разметка</li>
-                    <li>Мультимедийные возможности без зависимости от плагинов</li>
-                    <li>Передача инфорации между доменами</li>
-                    <li>Web Sockets</li>
-                    <li>Хранение данных на стороне клиента</li>
-                    <li>Улучшение интерфейса и работы с формами</li>
-                    <li>Улучшение доступности</li>
-                    <li>Расширенные селекторы, визуальные эффекты</li>
+                    <li>Geolocation API</li>
+                    <li>File API</li>
+                    <li>Drag & Drop</li>
+                    <li>Local storage</li>                    
                 </ul>                
             </section>
         </div>
     </div>
-    
-    <div class="slide" id="Support">
-        <div>
-            <section>                
-                <iframe src="http://html5readiness.com/" style=""></iframe>                
-            </section>
-        </div>
-    </div>
 
-    <div class="slide" id="Platforms">
+    <div class="slide cover" id="CoverGeolocation">
         <div>
             <section>
                 <header>
-                    <h2>Мультиплатформенность</h2>
+                    <h2>Geolocation API</h2>
                 </header>
-                <img src="pictures/html5-web.jpg" style="position: absolute; top: 0; left: 15px;">
-            </section>            
-        </div>
-    </div>
-
-    <div class="slide" id="Platforms2">
-        <div>
-            <section>
-                <header>
-                    <h2>Мультиплатформенность</h2>
-                </header>
-                <img src="pictures/html5-mobile.jpg" style="position: absolute; top: 0; left: 15px;">
-            </section>            
-        </div>
-    </div>
-
-    <div class="slide" id="Salary">
-        <div>
-            <section>
-                <header>
-                    <h2>Сколько стоит frontend-разарботчик?</h2>
-                </header>
-                <iframe border="0" frameborder="0" style="border: 0" src="http://rabota.yandex.ru/salary-blog.xml?type=3&text=javascript%20%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%87%D0%B8%D0%BA&text=%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%81%D1%82%20php&text=java%20%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%81%D1%82&text=python%20%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%81%D1%82&text=flash%20%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%81%D1%82&text=c%2B%2B%20%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%81%D1%82&rid=213&currency=RUR" width="800" height="294"></iframe>
+                <img src="pictures/geolocation.png" alt="">
             </section>
         </div>
     </div>
     
-	<div class="slide" id="Demos">
-        <div>
-		    <section>
-			    <header>
-				    <h2>Примеры приложений</h2>
-			    </header>
-			    <ul>
-                    <li><a href="http://disneydigitalbooks.go.com/tron/" target="_blank">Tron (HTML5 Canvas)</a></li>
-                    <li><a href="http://www.nevermindthebullets.com" target="_blank">Never Mind the Bullets (CSS3, parallax)</a></li>
-                    <li><a href="http://bartaz.github.com/impress.js/" target="_blank">impress.js</a></li>
-                    <li><a href="http://www.cuttherope.ie/" target="_blank">Cut the rope (Game)</a></li>
-                    <li><a href="http://triggerrally.com/x/Alpina/ArbusuG/drive" target="_blank">Trigger Rally (Game)</a></li>
-                    <li><a href="http://azathioprine.digisnap.bplaced.net/index.html" target="_blank">Alcatraz Azathioprine</a></li>
-                    <li><a href="http://madebyevan.com/webgl-water/" target="_blank">WebGL Water</a></li>
-                    <li><a href="http://webglsamples.googlecode.com/hg/aquarium/aquarium.html" target="_blank">WebGL Aquarium</a></li>
-			    </ul>
-		    </section>
-	    </div>
-    </div>
-              
-        <!-- Старые теги и тарибуты -->        
-
-        <!-- Проверка на валидность -->                  
-
-    <div class="slide cover" id="SemanticsCover">
+    <div class="slide" id="Geolocation">
         <div>
             <section>
                 <header>
-                    <h2>Семантика</h2>
-                </header>                
-                <img src="pictures/semantics.png">                
+                    <h2>Геопозиционирование. Варинты использования</h2>
+                </header>
+                <p><b>Geolocation (геопозиционирование)</b> - определение текущего местоположения пользователя</p>
+                <ul style="margin-top: -40px;">
+                    <li>Выдача контента в соответствии с местоположением пользователя (геотаргетинг)</li>
+                    <li>Обновление информации на странице по мере перемещения пользователя</li>
+                    <li>Составление маршрутов от точки до точки</li>
+                    <li>Геометки в социальных сетях</li>                    
+                </ul>                
             </section>
         </div>
     </div>
 
-    <div class="slide" id="SemanticMarkup">
+    <div class="slide" id="Geolocation1">
         <div>
             <section>
                 <header>
-                    <h2>Семантическая разметка</h2>
+                    <h2>Geolocation API</h2>
                 </header>
-                <p></p>
                 <ul>
-                    <li>Семантическая разметка упрощает понимание смысла и контекста информации, размещенной на странице, - как для машин, так и для людей</li>
-                    <li>Тэги не должны определять отбражение</li>
-                    <li>Главная цель тегов - смысловая нагрузка</li>
-                    <li>Разрешены перекрывающие тэги</li>                    
+                    <li>Высокоуровневый интерфейс</li>
+                    <li>Не зависит от устройства</li>
+                    <li>Не зависит источника информации</li>
+                    <li>Местоположение определяется на основании IP-адреса, MAC-адреса, координат точки доступа WiFi, GPS, GSM/CDMA идентификаторы и т.д.</li>
+                    <li>Информация о местоположении представлена широтой(latitude) и долготой(longtitude).</li>                    
                 </ul>
             </section>
         </div>
     </div>
 
-    <div class="slide" id="NewSemanticTags">
+
+    <div class="slide" id="Geolocation9">
         <div>
             <section>
                 <header>
-                    <h2>Новые структурные теги</h2>
-                </header>                
-                <table style="margin-top: -45px;">
+                    <h2>Geolocation API</h2>
+                </header>
+                <ul>                    
+                    <li>Предоставление данных о метоположении опционально (согласие пользователя)</li>
+                    <li>Требуется подключение к интернету</li>
+                    <li>Спецификация <a href="http://www.w3.org/TR/geolocation-API/">http://www.w3.org/TR/geolocation-API/</a></li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="Geolocation10">
+        <div>
+            <section>
+                <header>
+                    <h2>Geolocation API. Источники</h2>
+                </header>
+                <ol>
+                    <li><b>IP</b> (точность на уровне города, server-side, широкая доступность)</li>
+                    <li><b>Триангуляция</b>                    
+                        <ul>
+                            <li>GPS ~10 м</li>
+                            <li>Wi-Fi ~20 м</li>
+                            <li>A-GPS, Базовые станции (Вышки) ~1000 м</li>
+                        </ul>
+                    </li>                    
+                </ol>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="Geolocation2">
+        <div>
+            <section>
+                <header>
+                    <h2>Geolocation API. Поддержка</h2>
+                </header>
+                <table>
                     <tr>
-                        <td><code><mark>&lt;header&gt;</mark></code></td>
-                        <td> - Определение заголовка страницы или раздела</td>
+                        <td><img src="pictures/safari.png"></td>
+                        <td>Safari 5+</td>
                     </tr>
                     <tr>
-                        <td><code><mark>&lt;footer&gt;</mark></code></td>
-                        <td> - Определение завершителя страницы или раздела</td>
+                        <td><img src="pictures/ios.png"></td>
+                        <td>iPhone 3+</td>
                     </tr>
                     <tr>
-                        <td><code><mark>&lt;nav&gt;</mark></code></td>
-                        <td> - Определение области навигации страницы или раздела</td>
+                        <td><img src="pictures/android.png"></td>
+                        <td>Android 2+</td>
                     </tr>
                     <tr>
-                        <td><code><mark>&lt;section&gt;</mark></code></td>
-                        <td> - Определение логической области страницы или группировка контента</td>
+                        <td><img src="pictures/winphone.png"></td>
+                        <td>Windows Phone 7.5+</td>
+                    </tr>         
+                </table>
+                <table>
+                    <tr>
+                        <td><img src="pictures/ie.png"></td>
+                        <td>Internet Explorer 9+</td>
                     </tr>
                     <tr>
-                        <td><code><mark>&lt;articel&gt;</mark></code></td>
-                        <td> - Определение статьи (логически завершенного блока контента)</td>
+                        <td><img src="pictures/ff.png"></td>
+                        <td>Firefox 3.5+</td>
                     </tr>
                     <tr>
-                        <td><code><mark>&lt;aside&gt;</mark></code></td>
-                        <td> - Определение вторичного или связанного контента</td>
+                        <td><img src="pictures/chrome.png"></td>
+                        <td>Chrome 5+</td>
                     </tr>
+                    <tr>
+                        <td><img src="pictures/opera.png"></td>
+                        <td>Opera 10.6+</td>
+                    </tr>                    
                 </table>
             </section>
         </div>
     </div>
 
-    <div class="slide" id="NewSemanticTags2">
+    <div class="slide" id="Geolocation3">
         <div>
             <section>
                 <header>
-                    <h2>Новые структурные теги</h2>
+                    <h2>Geolocation API</h2>
                 </header>
-                <table style="margin-top: -45px;">
-                    <tr>
-                        <td><code><mark>&lt;hgroup &gt;</mark></code></td>
-                        <td> - Группировка нескольких заголовочных элементов (h1 - h6) в единый блок</td>
-                    </tr>
-                    <tr>
-                        <td><code><mark>&lt;figure&gt; и &lt;figurecapture &gt;</mark></code></td>
-                        <td> - Вставка дополнительного контента: схем, видео, картинок(с подписью)</td>
-                    </tr>
-                </table>
-            </section>
-        </div>
-    </div>
-    
-    <div class="slide" id="HTML4Layout">
-        <div>
-            <section>
-                <header>
-                    <h2>Структура документа HTML4</h2>
-                </header>
-                <p>
-                    <img src="pictures/HTML4-page-layout.png" style="height: 380px; margin-top: -40px;">
-                </p>
-            </section>
-        </div>
-    </div>
-
-    <div class="slide" id="HTML5Layout">
-        <div>
-            <section>
-                <header>
-                    <h2>Структура документа HTML5</h2>
-                </header>
-                <p>
-                    <img src="pictures/HTML5-page-layout.png" style="height: 380px; margin-top: -40px;">
-                </p>
-            </section>
-        </div>
-    </div>
-
-    <div class="slide" id="StructureExample">
-        <div>
-            <section>
-                <header>
-                    <h2>Пример</h2>
-                </header>
-                <pre style="margin-top: -30px; font-size: 12px;">
-                    <code><mark>&lt;!doctype html></mark></code>
-                    <code>&lt;html></code>
-                    <code>  &lt;head></code>
-                    <code>    &lt;meta charset=<mark>utf-8</mark>></code>
-                    <code>    &lt;title>(Это title) Пример страницы на HTML5&lt;/title></code>
-                    <code>  &lt;/head></code>                    
-                    <code>  &lt;body></code>
-                    <code>    &lt;header></code>
-                    <code>      &lt;hgroup></code>
-                    <code>        &lt;h1>Заголовок "h1" из hgroup&lt;/h1></code>
-                    <code>        &lt;h2>Заголовок "h2" из hgroup&lt;/h2></code>
-                    <code>      &lt;/hgroup></code>
-                    <code>    &lt;/header></code>
-                    <code>    &lt;nav></code>
-                    <code>      &lt;a href=link1.html>Первая ссылка из блока "nav"&lt;/a></code>
-                    <code>      &lt;a href=link2.html>Вторая ссылка из блока "nav"&lt;/a></code>
-                    <code>    &lt;/nav></code>                    
-                </pre>
-            </section>
-        </div>
-    </div>
-
-    <div class="slide" id="StructureExample2">
-        <div>
-            <section>
-                <header>
-                    <h2>Пример</h2>
-                </header>
-                <pre style="margin-top: -30px; font-size: 12px;">
-                    <code>    &lt;section></code>
-                    <code>      &lt;article></code>
-                    <code>        &lt;h1>Заголовок статьи из блока "article"&lt;/h1></code>
-                    <code>        &lt;p>Текст абзаца статьи из блока "article"&lt;/p></code>
-                    <code>          &lt;details></code>
-                    <code>            &lt;summary>Блок "details", текст тега "summary"&lt;/summary></code>
-                    <code>            &lt;p>Абзац из блога "details"&lt;/p></code>
-                    <code>          &lt;/details></code>
-                    <code>       &lt;/article></code>
-                    <code>    &lt;/section></code>
-                    <code>    &lt;footer></code>
-                    <code>      &lt;p>Содержимое абзаца из блока "footer"&lt;/p></code>
-                    <code>    &lt;/footer></code>
-                    <code>  &lt;/body></code>
-                    <code>&lt;/html></code>                                               
-                </pre>
-            </section>
-        </div>
-    </div>
-
-    <div class="slide" id="NewContentTags">
-        <div>
-            <section>
-                <header>
-                    <h2>Контентные тэги</h2>
-                </header>                
-                <img style="float: left;height: 275px;" src="pictures/contentTags1.png">
-                <img style="float: left;height: 275px;" src="pictures/contentTags2.png">
-            </section>
-        </div>
-    </div>
-    
-    <div class="slide" id="HTMLShiv">
-        <div>
-            <section>
-                <header>
-                    <h2>А если элементы не поддерживаются?</h2>
-                </header>                
-                <pre style="margin-top: -30px; font-size: 20px;">
-                    <code><mark>&lt;!--[if lt IE 9]&gt;</mark></code>
-                    <code>&lt;script type="text/javascript"&gt;</code>
-                    <code>    document.createElement("nav");</code>
-                    <code>    document.createElement("header");</code>
-                    <code>    document.createElement("footer");</code>
-                    <code>    document.createElement("section");</code>                    
+                 <pre>
+                    <code>&lt;script&gt;</code>
+                    <code>if (window.navigator.<mark>geolocation</mark>) {</code>
+                    <code>     // do some geolocation stuff</code>
+                    <code>} else {</code>
+                    <code>     // the browser does not natively support geolocation</code>
+                    <code>}</code>
                     <code>&lt;/script&gt;</code>
-                    <code>&lt;![endif]--&gt;</code>
-                </pre>      
-                <p style="margin-top: -35px;"><a href="http://code.google.com/p/html5shiv/">http://code.google.com/p/html5shiv/</a></p>
-            </section>
-        </div>
-    </div>
-
-    <div class="slide" id="DataAttributes">
-        <div>
-            <section>
-                <header>
-                    <h2>Пользовательские атрибуты данных</h2>
-                </header>             
-                <p>Возможность  включения пользовательских данных в любой элемент с использованием схемы data-*</p>
-                <p style="margin-top: -30px;">Чтение с помощью JavaScript getAttribute()</p>
-                <pre style="margin-top: -30px; font-size: 15px;">
-                    <code>&lt;a class="popup" <mark>data-width="600"</mark> <mark>data-height="400"</mark>>Test-project&lt;/a></code><br> 
-                    <code>$(".popup").click(function(event){</code>                        
-                    <code>    var width = $(this).attr("data-width");</code>                        
-                    <code>    var height = $(this).attr("data-height");</code>                        
-                    <code>    ...</code>                        
-                    <code>});</code>                        
                 </pre>
-            </section>
+            </section>           
         </div>
     </div>
 
-    <div class="slide" id="Microdata">
+    <div class="slide" id="Geolocation4">
         <div>
             <section>
                 <header>
-                    <h2>Microdata</h2>
+                    <h2>Geolocation API. Методы</h2>                    
                 </header>
-                <p><b>Микроданные</b> - способ семантически размечать сведения о разнообразных сущностях (событиях, организациях, людях, товарах и так далее)</p>
                 <ul>
-                    <li>набор пар ключ-значение, добавленных в документ параллельно основному контенту</li>
-                    <li>нацелено на автоматизированные парсеры (напр., поисковые роботы)</li>                    
+                    <li>
+                        <code style="font-size: 20px;">getCurrentPosition(successCallback, [errorCallback, [options]])</code> 
+                        - определяет местоположение пользователя один раз
+                    </li>
+                    <li>
+                        <code style="font-size: 20px;">watchPosition(successCallback, [errorCallback, [options]])</code> 
+                        - определяет местоположение пользователя с регулярным интервалом, возвращает связынный watchId
+                    </li>
+                    <li>
+                        <code style="font-size: 20px;">clearWatch(watchId)</code> - останавливает определение местоположения
+                    </li>
                 </ul>
             </section>
         </div>
     </div>
 
-    <div class="slide" id="MicrodataExample">
+    <div class="slide" id="GeolocationInterface1">
         <div>
             <section>
                 <header>
-                    <h2>Пример</h2>
+                    <h2>Geolocation API. Основные интефейсы</h2>
                 </header>
-                 <pre style="margin-top: -30px; font-size: 15px;">
-                    <code>&lt;section <mark>itemscope</mark> <mark>itemtype="http://data-vocabulary.org/Person"</mark>></code> 
-                    <code>  Hello, my name is &lt;span <mark>itemprop="name"</mark>>Vladimir Muzhanovskij&lt;/span></code>                        
-                    <code>  I am a &lt;span <mark>itemprop="job"</mark>> manager &lt;/span></code>                        
-                    <code>  from great company &lt;span <mark>itemprop="company"</mark>>System-Plus&lt;/span>.</code>                        
-                    <code>  My friends call me &lt;span <mark>itemprop="nickname</mark>">Vovan&lt;/span>.</code>                        
-                    <code>  You can visit my homepage at &lt;a href="http://www.cuct.ru" <mark>itemprop="url"</mark>>www.cuct.ru&lt;/a>.</code>                        
-                    <code>  &lt;section <mark>itemprop="address" itemscope itemtype="http://data-vocabulary.org/Address"</mark>></code>                        
-                    <code>    I live at &lt;span <mark>itemprop="street-address"</mark>>2/3 Tramvainaya&lt;/span> </code>                        
-                    <code>    &lt;span <mark>itemprop="city"</mark>>Ufa&lt;/span>, &lt;span <mark>itemprop="region"</mark>>Russia&lt;/span>.</code>                        
-                    <code>   &lt;/section></code>                        
-                    <code>&lt;/section></code>                        
+                <pre style="font-size: 20px;">
+                    <code>interface PositionOptions {</code>
+                    <code>    attribute boolean enableHighAccuracy;</code>
+                    <code>    attribute long timeout;</code>
+                    <code>    attribute long maximumAge;</code>
+                    <code>};</code>
+                    
+                    <code>interface Position {</code>
+                    <code>    readonly attribute Coordinates coords;</code>
+                    <code>    readonly attribute DOMTimeStamp timestamp;</code>
+                    <code>};</code>
                 </pre>
             </section>
         </div>
     </div>
 
-    <div class="slide" id="NewInputTypes">
+    <div class="slide" id="GeolocationInterface2">
         <div>
             <section>
                 <header>
-                    <h2>Новые типы полей ввода</h2>
+                    <h2>Geolocation API. Основные интефейсы</h2>
                 </header>
-                <ul style="margin-top: -55px;">
-                    <li>range</li>
-                    <li>search</li>
-                    <li>color</li>
-                    <li>email</li>
-                    <li>url</li>
-                    <li>date</li>
-                    <li>time</li>
-                    <li>tel и другие</li>
-                </ul>
-                <p style="margin-top: -45px;">Спецификация НЕ описывает как они должны отбражаться</p>
+                <pre style="font-size: 20px;">
+                  <code>interface Coordinates {</code>
+                  <code>    readonly attribute double latitude;</code>
+                  <code>    readonly attribute double longitude;</code>
+                  <code>    readonly attribute double? altitude;</code>
+                  <code>    readonly attribute double accuracy;</code>
+                  <code>    readonly attribute double? altitudeAccuracy;</code>
+                  <code>    readonly attribute double? heading;</code>
+                  <code>    readonly attribute double? speed;</code>
+                  <code>};</code>
+                </pre>
             </section>
         </div>
     </div>
 
-    <div class="slide" id="NewInputTypesExample">
+    <div class="slide" id="GeolocationInterface3">
         <div>
             <section>
                 <header>
-                    <h2>Пример</h2>
+                    <h2>Geolocation API. Основные интефейсы</h2>
                 </header>
-                <form style="margin-top: -45px;" method="GET">
-                    Число из интервала: <input type='range' min='0' max='100' step='10' value='10'/><br/>
-                    Целое число: <input type='number' min='-100' max='100' step='1' value='10'/><br/>                    
-                    Дата: <input type='date'/><br/>                    
-                    Цвет: <input type='color'/><br/>                    
-                    email:<input type='email' value='@domain.ru' required=/><br/>
-                    <input type='submit' value='Подтвердить'/>
-                </form>                
+                <pre style="font-size: 20px;">
+                    <code>interface PositionError {</code>
+                    <code>    const unsigned short PERMISSION_DENIED = 1;</code>
+                    <code>    const unsigned short POSITION_UNAVAILABLE = 2;</code>
+                    <code>    const unsigned short TIMEOUT = 3;</code>
+                    <code>    readonly attribute unsigned short code;</code>
+                    <code>    readonly attribute DOMString message;</code>
+                    <code>};</code>
+                </pre>
             </section>
         </div>
     </div>
     
-    <div class="slide" id="WhatToRead">
+    <div class="slide" id="Geolocation5">
         <div>
             <section>
                 <header>
-                    <h2>Литература</h2>
+                    <h2>Geolocation API. Пример</h2>
                 </header>
-                <ul>
-                    <li><a href="http://www.ozon.ru/context/detail/id/7339528/" target="_blank"><img src="pictures/html5andcss.jpg"></a></li>
-                    <li><a href="http://www.ozon.ru/context/detail/id/5914165/" target="_blank"><img src="pictures/html5pro.jpg"></a></li>
-                    <li><a href="http://www.amazon.com/HTML5-Canvas-Steve-Fulton/dp/144939390X/" target="_blank"><img src="pictures/html5canvas.jpg"></a></li>
-                </ul>                
+                <pre style="font-size: 16px;">                    
+                    <code>if (navigator.geolocation) {</code>
+                    <code>    navigator.geolocation.getCurrentPosition(</code>                                
+                    <code>        // successCallback</code>
+                    <code>        function(<mark>position</mark>) {</code>
+                    <code>            var latLng = new google.maps.LatLng(</code>
+                    <code>                <mark>position.coords.latitude</mark>,</code>
+                    <code>                <mark>position.coords.longitude</mark></code>
+                    <code>            );</code>
+                    <code>            var marker = new google.maps.Marker({position: latLng, map: map});</code>                
+                    <code>            map.setCenter(latLng);</code>                    
+                    <code>        },</code>                                  
+                </pre>
             </section>
         </div>
     </div>
 
-    <div class="slide" id="WhatToRead2">
+    <div class="slide" id="Geolocation6">
         <div>
             <section>
                 <header>
-                    <h2>Литература & ссылки</h2>
+                    <h2>Geolocation API. Пример</h2>
                 </header>
-                <div style="float: left;">
-                    <a href="http://www.amazon.com/gp/product/0321784421/" target="_blank"><img src="pictures/html5intro.jpg" height="300px"></a>
+                <pre style="font-size: 16px; margin-top: -35px;">         
+                    <code>        // errorCallback</code>
+                    <code>        function(e) {</code>
+                    <code>            switch (e.code) {</code>
+                    <code>                case e.PERMISSION_DENIED:</code>
+                    <code>                    alert("Permission denied");</code>
+                    <code>                    break;</code>
+                    <code>                case e.POSITION_UNAVAILABLE:</code>
+                    <code>                    alert("Position unavaliable");</code>
+                    <code>                    break;</code>
+                    <code>                case e.TIMEOUT:</code>                
+                    <code>                    alert("The application has timed out");</code>                                                     
+                    <code>                    break;</code>
+                    <code>                default:</code>
+                    <code>                    alert("There was a horrible Geolocation");</code>
+                    <code>            }</code>
+                    <code>        },</code>                                                                                       
+                </pre>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="Geolocation8">
+        <div>
+            <section>
+                <header>
+                    <h2>Geolocation API. Пример</h2>
+                </header>
+                <pre style="font-size: 16px; margin-top: -35px;">
+                    <code>        // Options</code>
+                    <code>        { </code>
+                    <code>            enableHighAccuracy: true,</code> 
+                    <code>            timeout: 60000,</code> 
+                    <code>            maximumAge: 0</code> 
+                    <code>        }</code>
+                    <code>    );</code>
+                    <code>}</code>                    
+                </pre>
+            </section>
+        </div>
+    </div>
+    
+
+    <div class="slide" id="Geolocation7">
+        <div>
+            <section>
+                <style>
+                    #see-position {
+                        margin-bottom: 10px;
+                        height: 35px;
+                        width: 70px;
+                    }
+                    #geo-map {
+                        height: 280px;
+                        width: 640px;
+                    }
+                    #geo-log {
+                        background-color: red;
+                        color: white;
+                        padding: 5px;
+                        border-radius: 5px;
+                        visibility: hidden;
+                    }
+                </style>
+                
+                <header>
+                    <h2>Geolocation API. Пример.</h2>
+                </header>
+                <button id="see-position">Где я?</button> 
+                <span id="geo-log"></span>
+                <div id="geo-map">
+                    <img src="http://maps.google.com/maps/api/staticmap?center=37.4419,-94.1419&zoom=3&size=680x278&sensor=true"/>
                 </div>
-                <div style="float: left; margin-left: 80px;">
-                    <ul>
-                        <li><a href="http://www.html5rocks.com/">http://www.html5rocks.com/</a></li>
-                        <li><a href="http://html5demos.com/">http://html5demos.com/</a></li>
-                        <li><a href="http://html5test.com/">http://html5test.com/</a></li>
-                        <li><a href="http://html5doctor.com/">http://html5doctor.com/</a></li>                                                
-                    </ul>
-                </div>                    
+
+                <script>
+                    $(document).ready(function() {
+                        var map = null;
+                        var geolog = document.querySelector('#geo-log');
+                        var geoMap = document.querySelector('#geo-map');
+
+                        function showPosition(position) {                            
+                            geolog.textContent = 
+                                "Вы в радиусе " + position.coords.accuracy + 
+                                " метров (" + position.coords.latitude + ", " +
+                                position.coords.longitude + ")";                            
+                            
+                            var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                            var marker = new google.maps.Marker({position: latLng, map: map});
+                            map.setCenter(latLng);
+                            map.setZoom(15);
+                        }
+
+                        function handlePositionError(evt) {
+                            geolog.textContent = evt.message;
+                        }
+
+                        function successPositionHandler(evt) {                            
+                            if (!map) {
+                                map = new google.maps.Map(geoMap, {
+                                    zoom: 3,
+                                    center: new google.maps.LatLng(37.4419, -94.1419), // United States
+                                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                                });
+                                map.getDiv().style.border =  '1px solid #ccc';
+                            }
+
+                            if (navigator.geolocation) {
+                                geolog.style.visibility = 'visible';
+                                geolog.textContent = 'Поиск местоположения...';
+                                navigator.geolocation.getCurrentPosition(showPosition, handlePositionError);                         
+                            } else {
+                                geolog.textContent = 'Oops! Your browser does not support geolocation.';
+                            }
+                        }
+                        $('#see-position').click(successPositionHandler);                                          
+                    });
+                </script>
+
             </section>
         </div>
     </div>
 
-    <div class="slide" id="ThankYou"><div>
-		<section>
-			<header>Контакты</header>
-			<p>Евгений Курбатов, Moneta.ru</p>
-			<ul>				
-				<li><a href="http://twitter.com/eugenixus">twitter.com/eugenixus</a></li>
-				<li><a href="mailto:eugene.kurbatov@gmail.com">eugene.kurbatov@gmail.com</a>, указать [asm] в теме</li>
-			</ul>			
-            <h2><code><mark>&lt;/thanks&gt;</mark></code></h2>
-		</section>
-	    </div>
-    </div>        
+    <div class="slide cover" id="CoverFileAPI">
+        <div>
+            <section>
+                <header>
+                    <h2>File API</h2>
+                </header>
+                <img src="pictures/fileapi.jpg" alt="">
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="FileAPI">
+        <div>
+            <section>
+                <header>
+                    <h2>File API</h2>
+                </header>
+                <ul>
+                    <li>Обеспечивает взаимодействие с локальными файлами на устройстве пользователя</li>
+                    <li>Работает с &lt;input type="file"&gt; или drag and drop</li>                                        
+                    <li>W3C cпецификация <a href="http://www.w3.org/TR/FileAPI/">http://www.w3.org/TR/FileAPI/</a><br>                        
+                        <b>FileReader(FileReaderSync)</b>, FileWriter, FileSystem                        
+                    </li>
+                    <li>Полчение информации о файле: размер, имя, MIME-тип и т.д.</li>
+                    <li>Доступ к содержимому файла</li>                    
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="FileAPIUseCase">
+        <div>
+            <section>
+                <header>
+                    <h2>Сценарии использования</h2>
+                </header>
+                <ul>
+                    <li>Выполнение операций с файлами на строне клиента, ограничение размера при загрузке</li>
+                    <li>Проверка типа файла</li>
+                    <li>...</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="FileAPISupport">
+        <div>
+            <section>
+                <header>
+                    <h2>File API. Поддержка</h2>
+                </header>
+                <table>
+                    <tr>
+                        <td><img src="pictures/safari.png"></td>
+                        <td>Safari 5.1+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/ios.png"></td>
+                        <td>iPhone 6+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/android.png"></td>
+                        <td>Android 3+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/blackberry.png"></td>
+                        <td>BlackBerry 7.0+</td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td><img src="pictures/ie.png"></td>
+                        <td>Internet Explorer 10+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/ff.png"></td>
+                        <td>Firefox 3.6+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/chrome.png"></td>
+                        <td>Chrome 6+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/opera.png"></td>
+                        <td>Opera 11.1+</td>
+                    </tr>
+                </table>
+            </section>
+        </div>
+    </div>
+
+
+    <div class="slide" id="FileAPIInterface">
+        <div>
+            <section>
+                <header>
+                    <h2>File API. Интерфейсы</h2>
+                </header>
+                <pre style="font-size: 20px;">
+                    <code>interface <b>Blob</b> {</code>
+                    <code>    readonly attribute unsigned long long size;</code>
+                    <code>    readonly attribute DOMString type;</code>                        
+                    <code>    Blob slice(optional long long start,</code>
+                    <code>               optional long long end,</code>
+                    <code>               optional DOMString contentType);</code>
+                    <code>    void close();</code>
+                    <code>};</code>                    
+                </pre>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="FileAPIInterface2">
+        <div>
+            <section>
+                <header>
+                    <h2>File API. Интерфейсы</h2>
+                </header>
+                <pre style="font-size: 20px;">
+                    <code>interface <b>File</b>: Blob {</code>
+                    <code>    readonly attribute DOMString name;</code>
+                    <code>    readonly attribute Date? lastModifiedDate;</code>
+                    <code>}; </code>
+                    <code>interface <b>FileList</b> {</code>
+                    <code>    getter File? item(unsigned long index);</code>
+                    <code>    readonly attribute unsigned long length;</code>
+                    <code>};</code>
+                </pre>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="FileAPIInterface3">
+        <div>
+            <section>
+                <header>
+                    <h2>File API. Интерфейсы</h2>
+                </header>
+                <pre style="font-size: 20px;">
+                    <code>interface <b>FileReader</b>: EventTarget {</code>
+                    <code>    readonly attribute unsigned short readyState;</code>	 
+	                <code>    readonly attribute (DOMString or ArrayBuffer)? result;</code>
+	                <code>    readonly attribute DOMError error;</code>
+                    <code>                                      </code>                    	  
+	                <code>    void readAsArrayBuffer(Blob blob);</code>
+	                <code>    void readAsText(Blob blob, optional DOMString encoding);</code>
+                    <code>    void readAsDataURL(Blob blob);</code>
+	                <code>    void abort();</code>
+	                <code>};</code>
+                </pre>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="FileAPIExample">
+        <div>
+            <section>
+                <header>
+                    <h2>File API. Пример</h2>
+                </header>
+                <pre style="font-size: 20px;">
+                    <code>document.querySelector('#dropzone').addEventListener('drop', function(e) {</code>
+                    <code>    var reader = new FileReader();</code>
+                    <code>    reader.<mark>onload</mark> = function(evt) {</code>
+                    <code>        document.querySelector('img').src = evt.target.<mark>result</mark>;</code>
+                    <code>    };</code>            
+                    <code>    reader.<mark>readAsDataURL</mark>(e.dataTransfer.files[0]);</code>
+                    <code>}, false);</code>
+                </pre>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="FileAPIExample2">
+        <style>
+            #dropzone {
+                height: 150px;
+                width: 100%;
+                -webkit-border-radius: 10px;
+                -khtml-border-radius: 10px;
+                -moz-border-radius: 10px;
+                border-radius: 10px;
+                border: 2px dashed #0687FF;
+            }
+            #dropzone.rounded {
+                -webkit-box-shadow: inset 0px 0px 50px #777;
+                -moz-box-shadow: inset 0px 0px 50px #777;
+                -o-box-shadow: inset 0px 0px 50px #777;
+                box-shadow: inset 0px 0px 50px #777;
+            }
+            #dnd-thumbnails {
+                height: 125px;
+                margin-top: 10px;
+            }
+            #dnd-thumbnails img {
+                width: 75px;
+                height: 75px;
+                border: 1px solid black;
+                margin-right: 10px;
+                -webkit-transition: -webkit-transform 0.2s ease-in, margin-left 0.7s ease-in-out, margin-right 0.7s ease-in-out;
+                -moz-transition: -moz-transform 1s ease-in-out, margin-left 0.7s ease-in-out, margin-right 0.7s ease-in-out;
+                -o-transition: -o-transform 1s ease-in-out, margin-left 1s ease-in-out, margin-left 0.7s ease-in-out, margin-right 0.7s ease-in-out;
+            }
+            #dnd-thumbnails img:hover {
+                -webkit-transform: scale(3.0) rotate(10deg);
+                -webkit-transform-origin: 50% 75px;
+                -moz-transform: scale(3.0) rotate(10deg);
+                -moz-transform-origin: 50% 75px;
+                margin: 0 100px;
+            }
+
+            .center {
+                text-align: center;
+            }
+            .boxcenter {
+                -moz-box-pack: center;
+            }
+            .vbox {
+                -moz-box-align: stretch;
+                -moz-box-orient: vertical;
+                display: -moz-box;
+            }
+        </style>
+        <div>
+            <section>
+                <header>
+                    <h2>File API Drag-in. Пример</h2>
+                </header>
+                <div class="example">
+                    <div id="dropzone" class="vbox boxcenter center">
+                        Drop in images from your desktop
+                    </div>
+                </div>
+                <div id="dnd-thumbnails" class="center"></div>
+
+
+                <script src="src/dnd-lib.js" defer></script>
+                <script defer>
+                    window.addEventListener('load', function(e) {
+                        var dndc = new DNDFileController('dropzone', 'dnd-thumbnails');
+                    }, false);
+                </script>
+
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="ReadFileEvents">
+        <div>
+            <section>
+                <header>
+                    <h2>События FileReader</h2>
+                </header>
+                <table>
+                    <tr>
+                        <td>loadstart</td>
+                        <td>When the read starts</td>
+                    </tr>
+                    <tr>
+                        <td>progress</td>
+                        <td>While reading (and decoding) blob, and reporting partial Blob data (progess.loaded/progress.total)</td>
+                    </tr>
+                    <tr>
+                        <td>abort</td>
+                        <td>When the read has been aborted. For instance, by invoking the abort() method</td>
+                    </tr>
+                    <tr>
+                        <td>error</td>
+                        <td>When the read has failed</td>
+                    </tr>
+                    <tr>
+                        <td>load</td>
+                        <td>When the read has successfully completed</td>
+                    </tr>
+                    <tr>
+                        <td>loadend</td>
+                        <td>When the request has completed (either in success or failure)</td>
+                    </tr>                    
+                </table>
+            </section>
+        </div>
+    </div>    
     
-	<!--
-		Для того, чтобы убрать индикатор прогресса
-		из презентации, просто удалите элемент «progress».
-		-->
+    <div class="slide cover" id="CoverDragAndDropAPI">
+        <div>
+            <section style="background-color: #ffffff;">
+                <header>
+                    <h2 style="text-align: center; font-size: 70px;">Drag & drop API</h2>
+                </header>
+                <img src="pictures/drag&drop.png" style="height: 350px; margin-top: 180px;">
+            </section>            
+        </div>
+    </div>
+
+    <div class="slide" id="DragAndDropAPI">
+        <div>
+            <section>
+                <header>
+                    <h2>Drag and Drop API</h2>
+                </header>
+                <ul>
+                    <li>Способ оперирования элементами интерфейса путем "захвата" и "бросания"</li>
+                    <li>Интуитивно понятный способ</li>
+                    <li>Спецификация <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/dnd.html#dnd">http://www.whatwg.org/specs/web-apps/current-work/multipage/dnd.html#dnd</a></li>
+                    <li>API основанно на событиях</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="SupportDragAndDropAPI">
+        <div>
+            <section>
+                <header>
+                    <h2>Drag and Drop API. Поддержка</h2>
+                </header>             
+                <table>
+                    <tr>
+                        <td><img src="pictures/ie.png"></td>
+                        <td>Internet Explorer 7+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/ff.png"></td>
+                        <td>Firefox 14+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/chrome.png"></td>
+                        <td>Chrome 21+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/opera.png"></td>
+                        <td>Opera 12.0+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/safari.png"></td>
+                        <td>Safari 5.1+</td>
+                    </tr>
+                </table>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="CheckDragAndDropAPI">
+        <div>
+            <section>
+                <header>
+                    <h2>Drag and Drop API</h2>
+                </header>
+                <pre>
+                    <code>if (Modernizr.draganddrop) {</code>
+                    <code>    // Browser supports HTML5 DnD.</code>
+                    <code>} else {</code>
+                    <code>    // Fallback to a library solution.</code>
+                    <code>}</code>
+                 </pre>
+            </section>           
+        </div>
+    </div>
+
+    <div class="slide" id="DragAndDropAPI2">
+        <div>
+            <section>
+                <header>
+                    <h2>Drag and Drop API</h2>
+                </header>
+                <pre>
+                    <code>&lt;div <mark>draggable="true"</mark>>Перетаскиваемый элемент&lt;/div&gt;</code>
+                </pre>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="EventsDragAndDropAPI">
+        <div>
+            <section>
+                <header>
+                    <h2>Drag and Drop API. События</h2>
+                </header>
+                <table>
+                    <tr>
+                        <td><b>dragstart</b></td>
+                        <td>Инициируется в начале перетаскивания</td>
+                    </tr>
+                    <tr>
+                        <td><b>drag</b></td>
+                        <td>Инициируется в начале, продолжается пока элемент не "брошен"</td>
+                    </tr>
+                    <tr>
+                        <td><b>dragenter</b></td>
+                        <td>Инициируется, когда элемент находится над "принимаемой" областью</td>
+                    </tr>
+                    <tr>
+                        <td><b>dragleave</b></td>
+                        <td>Инициируется, когда элемент покидает "принимаемую" область</td>
+                    </tr>                   
+                </table>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="EventsDragAndDropAPI2">
+        <div>
+            <section>
+                <header>
+                    <h2>Drag and Drop API. События</h2>
+                </header>
+                <table>                  
+                    <tr>
+                        <td><b>dragover</b></td>
+                        <td>Инициируется, когда элемент находится над "принимаемую" область, продолжается пока ее не покинет</td>
+                    </tr>
+                    <tr>
+                        <td><b>drop</b></td>
+                        <td>Инициируется, когда элемент "брошен"</td>
+                    </tr>
+                    <tr>
+                        <td><b>dragend</b></td>
+                        <td>Инициируется в конце перетаскивания</td>
+                    </tr>
+                </table>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="DataTransferDragAndDropAPI">
+        <div>
+            <section>
+                <header>
+                    <h2>Drag and Drop API</h2>
+                </header>
+                <pre style="font-size: 16px;">
+                    <code>document.getElementById("dragElem").addEventListener('dragstart', function(event) {</code>
+                    <code>    event.<mark>dataTransfer.setData</mark>('text/plain', 'Customized text');</code>
+                    <code>    event.<mark>dataTransfer.effectAllowed</mark> = 'copy';</code>
+                    <code>}, false);</code>
+                    <code>document.getElementById("dropZone").addEventListener('dragover', function(event) {</code>
+                    <code>    if(e.preventDefault)</code>
+                    <code>        <mark>e.preventDefault();</mark></code>
+                    <code>     return false;</code>
+                    <code>}, false);</code>
+                    <code>document.getElementById("dropZone").addEventListener('drop', function(event) {</code>                                        
+                    <code>     //обработка </code>
+                    <code>}, false);</code>                                                         
+                </pre>
+            </section>
+        </div>
+    </div>
+    
+    <div class="slide" id="DragAndDropAPI3">
+        <div>
+            <section>
+                <header>
+                    <h2>Drag and Drop API. Пример</h2>
+                </header>
+                <p><a href="http://nettutsplus.s3.amazonaws.com/64_html5dragdrop/demo/index.html" target="_blank">Shopping Cart</a></p>
+            </section>
+        </div>
+    </div>      
+    
+    <div class="slide cover" id="CoverLocalStorage">
+        <div>
+            <section style="background-color: #ffffff;">
+                <header>
+                    <h2 style="text-align: center; font-size: 70px;">Local Storage</h2>
+                </header>
+                <img src="pictures/html5storage.jpg" style="height: 350px; margin-top: 180px;">
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="LocalStorage">
+        <div>
+            <section>
+                <header>
+                    <h2>Local storage API</h2>
+                </header>
+                <ul>
+                    <li><b>Local storage (локальное хранилище)</b> - база данных на стороне клиента, содержащая пары ключ-значение</li>
+                    <li>Большой объем хранилища (ограничивается настройками браузера и вашим HDD)</li>
+                    <li>Не ограничено временем жизни</li>
+                    <li>Offline приложения</li>
+                    <li>Спецификация <a href="http://www.w3.org/TR/webstorage/">http://www.w3.org/TR/webstorage/</a></li>
+                </ul>
+            </section>
+        </div>
+    </div>
+    
+    <div class="slide" id="LocalStorageSupport">
+        <div>
+            <section>
+                <header>
+                    <h2>Local storage. Поддержка</h2>
+                </header>
+                <table>
+                    <tr>
+                        <td><img src="pictures/safari.png"></td>
+                        <td>Safari 4.0+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/ios.png"></td>
+                        <td>iPhone 2+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/android.png"></td>
+                        <td>Android 2+</td>
+                    </tr>                    
+                </table>
+                <table>
+                    <tr>
+                        <td><img src="pictures/ie.png"></td>
+                        <td>Internet Explorer 8+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/ff.png"></td>
+                        <td>Firefox 3.5+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/chrome.png"></td>
+                        <td>Chrome 4+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/opera.png"></td>
+                        <td>Opera 10.5+</td>
+                    </tr>
+                </table>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="LocalStorageAPI">
+        <div>
+            <section>
+                <header>
+                    <h2>Local storage API</h2>
+                </header>
+                <pre style="font-size: 20px; margin-top: -20px;">
+                    <code>localStorage.setItem('foo', 'bar');</code>
+                    <code>var foo = localStorage.getItem('foo');</code>
+                    <code> </code>
+                    <code>localStorage['foo'] = 'bar';</code>
+                    <code>var foo = localStorage['foo'];</code>
+                    <code>localStorage.removeItem('foo'); //удалит элемент объекта</code>
+                    <code>localStorage.clear(); //удалит все элементы</code>
+                    <code> </code>
+                    <code>localStorage.setItem('user', JSON.stringify({name: "jonh"}));</code>
+                    <code>var user = JSON.parse(localStorage.getItem('user'));</code>
+                </pre>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="LocalStorageAPI2">
+        <div>
+            <section>
+                <header>
+                    <h2>Local storage API. События</h2>
+                </header>
+                <pre>
+                    <code>interface StorageEvent : Event {</code>
+                    <code>    readonly attribute DOMString key;</code>
+                    <code>    readonly attribute DOMString? oldValue;</code>
+                    <code>    readonly attribute DOMString? newValue;</code>
+                    <code>    readonly attribute DOMString url;</code>
+                    <code>    readonly attribute Storage? storageArea;</code>
+                    <code>};</code>
+                </pre>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="LocalStorageAPI3">
+        <div>
+            <section>
+                <header>
+                    <h2>Local storage API. Пример</h2>
+                </header>
+                <p><a href="http://html5demos.com/storage" target="_blank">Storage</a></p>
+            </section>
+        </div>
+    </div>
+
+    <!--<div class="slide cover" id="AppCache">-->
+        <!--<div>-->
+            <!--<section>-->
+                <!--<header>-->
+                    <!--<h2>Applicaton cache</h2>-->
+                <!--</header>-->
+            <!--</section>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="slide cover" id="HistoryAPI">-->
+        <!--<div>-->
+            <!--<section>-->
+                <!--<header>-->
+                    <!--<h2>History API</h2>-->
+                <!--</header>-->
+            <!--</section>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="slide cover" id="EditInPlace">-->
+        <!--<div>-->
+            <!--<section>-->
+                <!--<header>-->
+                    <!--<h2>Edit In Place</h2>-->
+                <!--</header>-->
+            <!--</section>-->
+        <!--</div>-->
+    <!--</div>-->
+
+
+    <!--
+        Для того, чтобы убрать индикатор прогресса
+        из презентации, просто удалите элемент «progress».
+        -->
 	<div class="progress"><div></div></div>
 	<script src="../../shower/scripts/script.js"></script>	
 </body>
