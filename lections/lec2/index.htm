@@ -27,20 +27,28 @@
             height: 300px;
         }
 
-
-        #Geolocation2 section table:nth-child(1) {
+        #Geolocation2 section table:nth-child(1),         
+        #FileAPISupport section table:nth-child(1) {
             height: 300px; float: left;
         }
 
-        #Geolocation2 section table:nth-child(2) {
+        #Geolocation2 section table:nth-child(2),        
+        #FileAPISupport section table:nth-child(2),
+        #LocalStorageSupport section table:nth-child(2) {
             height: 300px; float: right;
         }
         
-        #Geolocation2 table td {
+        #Geolocation2 table td,
+        #SupportDragAndDropAPI table td,
+        #LocalStorageSupport table td,
+        #FileAPISupport table td {
             vertical-align: middle;
         }
 
-        #Geolocation2 table td img {
+        #Geolocation2 table td img,
+        #SupportDragAndDropAPI table td img,
+        #LocalStorageSupport table td img,
+        #FileAPISupport table td img {
             height: 60px;
             padding-right: 10px;
         }
@@ -57,6 +65,28 @@
         #CoverGeolocation h2 {
             text-align:center;
             font-size:70px;
+        }
+
+        #CoverFileAPI section {
+            background-color: #ffffff;
+        }
+        #CoverFileAPI h2 {
+            text-align:center;
+            font-size:70px;
+        }
+        #CoverFileAPI img {
+            position: absolute;
+            left: 500px;
+            top: 190px;
+            height: 340px;
+        }
+        
+        #ReadFileEvents table td, #EventsDragAndDropAPI table td, #EventsDragAndDropAPI2 table td {
+            padding-right: 25px;
+        }
+
+        #ReadFileEvents table {
+            margin-top: -50px;
         }
         
 	</style>
@@ -86,8 +116,9 @@
                 </header>                
                 <ul>
                     <li>Geolocation API</li>
+                    <li>File API</li>
                     <li>Drag & Drop</li>
-                    <li>Local storage</li>
+                    <li>Local storage</li>                    
                 </ul>                
             </section>
         </div>
@@ -108,7 +139,7 @@
         <div>
             <section>
                 <header>
-                    <h2>Geolocation API</h2>
+                    <h2>Геопозиционирование. Варинты использования</h2>
                 </header>
                 <p><b>Geolocation (геопозиционирование)</b> - определение текущего местоположения пользователя</p>
                 <ul style="margin-top: -40px;">
@@ -178,8 +209,26 @@
         <div>
             <section>
                 <header>
-                    <h2>Geolocation API. Поддержка.</h2>
+                    <h2>Geolocation API. Поддержка</h2>
                 </header>
+                <table>
+                    <tr>
+                        <td><img src="pictures/safari.png"></td>
+                        <td>Safari 5+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/ios.png"></td>
+                        <td>iPhone 3+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/android.png"></td>
+                        <td>Android 2+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/winphone.png"></td>
+                        <td>Windows Phone 7.5+</td>
+                    </tr>         
+                </table>
                 <table>
                     <tr>
                         <td><img src="pictures/ie.png"></td>
@@ -196,25 +245,7 @@
                     <tr>
                         <td><img src="pictures/opera.png"></td>
                         <td>Opera 10.6+</td>
-                    </tr>                             
-                </table>
-                <table>                   
-                    <tr>
-                        <td><img src="pictures/safari.png"></td>
-                        <td>Safari 5+</td>
-                    </tr>
-                    <tr>
-                        <td><img src="pictures/ios.png"></td>
-                        <td>iPhone 3+</td>
-                    </tr>
-                    <tr>
-                        <td><img src="pictures/android.png"></td>
-                        <td>Android 2+</td>
-                    </tr>
-                    <tr>
-                        <td><img src="pictures/winphone.png"></td>
-                        <td>Windows Phone 7.5+</td>
-                    </tr>
+                    </tr>                    
                 </table>
             </section>
         </div>
@@ -243,22 +274,92 @@
         <div>
             <section>
                 <header>
-                    <h2>Geolocation API. Методы.</h2>                    
+                    <h2>Geolocation API. Методы</h2>                    
                 </header>
                 <ul>
-                    <li>getCurrentPosition(successCallback, [errorCallback, [options]])</li>
-                    <li>watchPosition(successCallback, [errorCallback, [options]])</li>
-                    <li>clearWatch(watchId)</li>
+                    <li>
+                        <code style="font-size: 20px;">getCurrentPosition(successCallback, [errorCallback, [options]])</code> 
+                        - определяет местоположение пользователя один раз
+                    </li>
+                    <li>
+                        <code style="font-size: 20px;">watchPosition(successCallback, [errorCallback, [options]])</code> 
+                        - определяет местоположение пользователя с регулярным интервалом, возвращает связынный watchId
+                    </li>
+                    <li>
+                        <code style="font-size: 20px;">clearWatch(watchId)</code> - останавливает определение местоположения
+                    </li>
                 </ul>
             </section>
         </div>
     </div>
 
+    <div class="slide" id="GeolocationInterface1">
+        <div>
+            <section>
+                <header>
+                    <h2>Geolocation API. Основные интефейсы</h2>
+                </header>
+                <pre style="font-size: 20px;">
+                    <code>interface PositionOptions {</code>
+                    <code>    attribute boolean enableHighAccuracy;</code>
+                    <code>    attribute long timeout;</code>
+                    <code>    attribute long maximumAge;</code>
+                    <code>};</code>
+                    
+                    <code>interface Position {</code>
+                    <code>    readonly attribute Coordinates coords;</code>
+                    <code>    readonly attribute DOMTimeStamp timestamp;</code>
+                    <code>};</code>
+                </pre>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="GeolocationInterface2">
+        <div>
+            <section>
+                <header>
+                    <h2>Geolocation API. Основные интефейсы</h2>
+                </header>
+                <pre style="font-size: 20px;">
+                  <code>interface Coordinates {</code>
+                  <code>    readonly attribute double latitude;</code>
+                  <code>    readonly attribute double longitude;</code>
+                  <code>    readonly attribute double? altitude;</code>
+                  <code>    readonly attribute double accuracy;</code>
+                  <code>    readonly attribute double? altitudeAccuracy;</code>
+                  <code>    readonly attribute double? heading;</code>
+                  <code>    readonly attribute double? speed;</code>
+                  <code>};</code>
+                </pre>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="GeolocationInterface3">
+        <div>
+            <section>
+                <header>
+                    <h2>Geolocation API. Основные интефейсы</h2>
+                </header>
+                <pre style="font-size: 20px;">
+                    <code>interface PositionError {</code>
+                    <code>    const unsigned short PERMISSION_DENIED = 1;</code>
+                    <code>    const unsigned short POSITION_UNAVAILABLE = 2;</code>
+                    <code>    const unsigned short TIMEOUT = 3;</code>
+                    <code>    readonly attribute unsigned short code;</code>
+                    <code>    readonly attribute DOMString message;</code>
+                    <code>};</code>
+                </pre>
+            </section>
+        </div>
+    </div>
+    
     <div class="slide" id="Geolocation5">
         <div>
             <section>
                 <header>
-                    <h2>Geolocation API. Пример.</h2>
+                    <h2>Geolocation API. Пример</h2>
                 </header>
                 <pre style="font-size: 16px;">                    
                     <code>if (navigator.geolocation) {</code>
@@ -281,7 +382,7 @@
         <div>
             <section>
                 <header>
-                    <h2>Geolocation API. Пример.</h2>
+                    <h2>Geolocation API. Пример</h2>
                 </header>
                 <pre style="font-size: 16px; margin-top: -35px;">         
                     <code>        // errorCallback</code>
@@ -309,7 +410,7 @@
         <div>
             <section>
                 <header>
-                    <h2>Geolocation API. Пример.</h2>
+                    <h2>Geolocation API. Пример</h2>
                 </header>
                 <pre style="font-size: 16px; margin-top: -35px;">
                     <code>        // Options</code>
@@ -405,81 +506,617 @@
         </div>
     </div>
 
-    <div class="slide" id="">
+    <div class="slide cover" id="CoverFileAPI">
         <div>
             <section>
                 <header>
-                    <h2></h2>
+                    <h2>File API</h2>
                 </header>
-                <pre>
-                    interface PositionOptions {
-                        attribute boolean enableHighAccuracy;
-                        attribute long timeout;
-                        attribute long maximumAge;
-                    };
-                    
-                    interface Position {
-                        readonly attribute Coordinates coords;
-                        readonly attribute DOMTimeStamp timestamp;
-                    };
+                <img src="pictures/fileapi.jpg" alt="">
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="FileAPI">
+        <div>
+            <section>
+                <header>
+                    <h2>File API</h2>
+                </header>
+                <ul>
+                    <li>Обеспечивает взаимодействие с локальными файлами на устройстве пользователя</li>
+                    <li>Работает с &lt;input type="file"&gt; или drag and drop</li>                                        
+                    <li>W3C cпецификация <a href="http://www.w3.org/TR/FileAPI/">http://www.w3.org/TR/FileAPI/</a><br>                        
+                        <b>FileReader(FileReaderSync)</b>, FileWriter, FileSystem                        
+                    </li>
+                    <li>Полчение информации о файле: размер, имя, MIME-тип и т.д.</li>
+                    <li>Доступ к содержимому файла</li>                    
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="FileAPIUseCase">
+        <div>
+            <section>
+                <header>
+                    <h2>Сценарии использования</h2>
+                </header>
+                <ul>
+                    <li>Выполнение операций с файлами на строне клиента, ограничение размера при загрузке</li>
+                    <li>Проверка типа файла</li>
+                    <li>...</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="FileAPISupport">
+        <div>
+            <section>
+                <header>
+                    <h2>File API. Поддержка</h2>
+                </header>
+                <table>
+                    <tr>
+                        <td><img src="pictures/safari.png"></td>
+                        <td>Safari 5.1+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/ios.png"></td>
+                        <td>iPhone 6+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/android.png"></td>
+                        <td>Android 3+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/blackberry.png"></td>
+                        <td>BlackBerry 7.0+</td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td><img src="pictures/ie.png"></td>
+                        <td>Internet Explorer 10+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/ff.png"></td>
+                        <td>Firefox 3.6+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/chrome.png"></td>
+                        <td>Chrome 6+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/opera.png"></td>
+                        <td>Opera 11.1+</td>
+                    </tr>
+                </table>
+            </section>
+        </div>
+    </div>
+
+
+    <div class="slide" id="FileAPIInterface">
+        <div>
+            <section>
+                <header>
+                    <h2>File API. Интерфейсы</h2>
+                </header>
+                <pre style="font-size: 20px;">
+                    <code>interface <b>Blob</b> {</code>
+                    <code>    readonly attribute unsigned long long size;</code>
+                    <code>    readonly attribute DOMString type;</code>                        
+                    <code>    Blob slice(optional long long start,</code>
+                    <code>               optional long long end,</code>
+                    <code>               optional DOMString contentType);</code>
+                    <code>    void close();</code>
+                    <code>};</code>                    
                 </pre>
             </section>
         </div>
     </div>
 
-    <div class="slide" id="">
+    <div class="slide" id="FileAPIInterface2">
         <div>
             <section>
                 <header>
-                    <h2></h2>
+                    <h2>File API. Интерфейсы</h2>
                 </header>
-                <pre>
-                    interface Coordinates {
-                        readonly attribute double latitude;
-                        readonly attribute double longitude;
-                        readonly attribute double? altitude;
-                        readonly attribute double accuracy;
-                        readonly attribute double? altitudeAccuracy;
-                        readonly attribute double? heading;
-                        readonly attribute double? speed;
-                    };
+                <pre style="font-size: 20px;">
+                    <code>interface <b>File</b>: Blob {</code>
+                    <code>    readonly attribute DOMString name;</code>
+                    <code>    readonly attribute Date? lastModifiedDate;</code>
+                    <code>}; </code>
+                    <code>interface <b>FileList</b> {</code>
+                    <code>    getter File? item(unsigned long index);</code>
+                    <code>    readonly attribute unsigned long length;</code>
+                    <code>};</code>
                 </pre>
             </section>
         </div>
     </div>
 
-    <div class="slide" id="">
+    <div class="slide" id="FileAPIInterface3">
         <div>
             <section>
                 <header>
-                    <h2></h2>
+                    <h2>File API. Интерфейсы</h2>
                 </header>
-                <pre>
-                    interface PositionError {
-                        const unsigned short PERMISSION_DENIED = 1;
-                        const unsigned short POSITION_UNAVAILABLE = 2;
-                        const unsigned short TIMEOUT = 3;
-                        readonly attribute unsigned short code;
-                        readonly attribute DOMString message;
-                    };
+                <pre style="font-size: 20px;">
+                    <code>interface <b>FileReader</b>: EventTarget {</code>
+                    <code>    readonly attribute unsigned short readyState;</code>	 
+	                <code>    readonly attribute (DOMString or ArrayBuffer)? result;</code>
+	                <code>    readonly attribute DOMError error;</code>
+                    <code>                                      </code>                    	  
+	                <code>    void readAsArrayBuffer(Blob blob);</code>
+	                <code>    void readAsText(Blob blob, optional DOMString encoding);</code>
+                    <code>    void readAsDataURL(Blob blob);</code>
+	                <code>    void abort();</code>
+	                <code>};</code>
                 </pre>
             </section>
         </div>
     </div>
 
-    <div class="slide" id="">
+    <div class="slide" id="FileAPIExample">
         <div>
             <section>
                 <header>
-                    <h2></h2>
+                    <h2>File API. Пример</h2>
                 </header>
-                <pre>
-                    watchPosition(successCallback, [errorCallback, [options]])
-                    clearWatch(watchId)
+                <pre style="font-size: 20px;">
+                    <code>document.querySelector('#dropzone').addEventListener('drop', function(e) {</code>
+                    <code>    var reader = new FileReader();</code>
+                    <code>    reader.<mark>onload</mark> = function(evt) {</code>
+                    <code>        document.querySelector('img').src = evt.target.<mark>result</mark>;</code>
+                    <code>    };</code>            
+                    <code>    reader.<mark>readAsDataURL</mark>(e.dataTransfer.files[0]);</code>
+                    <code>}, false);</code>
                 </pre>
             </section>
         </div>
     </div>
+
+    <div class="slide" id="FileAPIExample2">
+        <style>
+            #dropzone {
+                height: 150px;
+                width: 100%;
+                -webkit-border-radius: 10px;
+                -khtml-border-radius: 10px;
+                -moz-border-radius: 10px;
+                border-radius: 10px;
+                border: 2px dashed #0687FF;
+            }
+            #dropzone.rounded {
+                -webkit-box-shadow: inset 0px 0px 50px #777;
+                -moz-box-shadow: inset 0px 0px 50px #777;
+                -o-box-shadow: inset 0px 0px 50px #777;
+                box-shadow: inset 0px 0px 50px #777;
+            }
+            #dnd-thumbnails {
+                height: 125px;
+                margin-top: 10px;
+            }
+            #dnd-thumbnails img {
+                width: 75px;
+                height: 75px;
+                border: 1px solid black;
+                margin-right: 10px;
+                -webkit-transition: -webkit-transform 0.2s ease-in, margin-left 0.7s ease-in-out, margin-right 0.7s ease-in-out;
+                -moz-transition: -moz-transform 1s ease-in-out, margin-left 0.7s ease-in-out, margin-right 0.7s ease-in-out;
+                -o-transition: -o-transform 1s ease-in-out, margin-left 1s ease-in-out, margin-left 0.7s ease-in-out, margin-right 0.7s ease-in-out;
+            }
+            #dnd-thumbnails img:hover {
+                -webkit-transform: scale(3.0) rotate(10deg);
+                -webkit-transform-origin: 50% 75px;
+                -moz-transform: scale(3.0) rotate(10deg);
+                -moz-transform-origin: 50% 75px;
+                margin: 0 100px;
+            }
+
+            .center {
+                text-align: center;
+            }
+            .boxcenter {
+                -moz-box-pack: center;
+            }
+            .vbox {
+                -moz-box-align: stretch;
+                -moz-box-orient: vertical;
+                display: -moz-box;
+            }
+        </style>
+        <div>
+            <section>
+                <header>
+                    <h2>File API Drag-in. Пример</h2>
+                </header>
+                <div class="example">
+                    <div id="dropzone" class="vbox boxcenter center">
+                        Drop in images from your desktop
+                    </div>
+                </div>
+                <div id="dnd-thumbnails" class="center"></div>
+
+
+                <script src="src/dnd-lib.js" defer></script>
+                <script defer>
+                    window.addEventListener('load', function(e) {
+                        var dndc = new DNDFileController('dropzone', 'dnd-thumbnails');
+                    }, false);
+                </script>
+
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="ReadFileEvents">
+        <div>
+            <section>
+                <header>
+                    <h2>События FileReader</h2>
+                </header>
+                <table>
+                    <tr>
+                        <td>loadstart</td>
+                        <td>When the read starts</td>
+                    </tr>
+                    <tr>
+                        <td>progress</td>
+                        <td>While reading (and decoding) blob, and reporting partial Blob data (progess.loaded/progress.total)</td>
+                    </tr>
+                    <tr>
+                        <td>abort</td>
+                        <td>When the read has been aborted. For instance, by invoking the abort() method</td>
+                    </tr>
+                    <tr>
+                        <td>error</td>
+                        <td>When the read has failed</td>
+                    </tr>
+                    <tr>
+                        <td>load</td>
+                        <td>When the read has successfully completed</td>
+                    </tr>
+                    <tr>
+                        <td>loadend</td>
+                        <td>When the request has completed (either in success or failure)</td>
+                    </tr>                    
+                </table>
+            </section>
+        </div>
+    </div>    
+    
+    <div class="slide cover" id="CoverDragAndDropAPI">
+        <div>
+            <section style="background-color: #ffffff;">
+                <header>
+                    <h2 style="text-align: center; font-size: 70px;">Drag & drop API</h2>
+                </header>
+                <img src="pictures/drag&drop.png" style="height: 350px; margin-top: 180px;">
+            </section>            
+        </div>
+    </div>
+
+    <div class="slide" id="DragAndDropAPI">
+        <div>
+            <section>
+                <header>
+                    <h2>Drag and Drop API</h2>
+                </header>
+                <ul>
+                    <li>Способ оперирования элементами интерфейса путем "захвата" и "бросания"</li>
+                    <li>Интуитивно понятный способ</li>
+                    <li>Спецификация <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/dnd.html#dnd">http://www.whatwg.org/specs/web-apps/current-work/multipage/dnd.html#dnd</a></li>
+                    <li>API основанно на событиях</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="SupportDragAndDropAPI">
+        <div>
+            <section>
+                <header>
+                    <h2>Drag and Drop API. Поддержка</h2>
+                </header>             
+                <table>
+                    <tr>
+                        <td><img src="pictures/ie.png"></td>
+                        <td>Internet Explorer 7+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/ff.png"></td>
+                        <td>Firefox 14+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/chrome.png"></td>
+                        <td>Chrome 21+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/opera.png"></td>
+                        <td>Opera 12.0+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/safari.png"></td>
+                        <td>Safari 5.1+</td>
+                    </tr>
+                </table>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="CheckDragAndDropAPI">
+        <div>
+            <section>
+                <header>
+                    <h2>Drag and Drop API</h2>
+                </header>
+                <pre>
+                    <code>if (Modernizr.draganddrop) {</code>
+                    <code>    // Browser supports HTML5 DnD.</code>
+                    <code>} else {</code>
+                    <code>    // Fallback to a library solution.</code>
+                    <code>}</code>
+                 </pre>
+            </section>           
+        </div>
+    </div>
+
+    <div class="slide" id="DragAndDropAPI2">
+        <div>
+            <section>
+                <header>
+                    <h2>Drag and Drop API</h2>
+                </header>
+                <pre>
+                    <code>&lt;div <mark>draggable="true"</mark>>Перетаскиваемый элемент&lt;/div&gt;</code>
+                </pre>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="EventsDragAndDropAPI">
+        <div>
+            <section>
+                <header>
+                    <h2>Drag and Drop API. События</h2>
+                </header>
+                <table>
+                    <tr>
+                        <td><b>dragstart</b></td>
+                        <td>Инициируется в начале перетаскивания</td>
+                    </tr>
+                    <tr>
+                        <td><b>drag</b></td>
+                        <td>Инициируется в начале, продолжается пока элемент не "брошен"</td>
+                    </tr>
+                    <tr>
+                        <td><b>dragenter</b></td>
+                        <td>Инициируется, когда элемент находится над "принимаемой" областью</td>
+                    </tr>
+                    <tr>
+                        <td><b>dragleave</b></td>
+                        <td>Инициируется, когда элемент покидает "принимаемую" область</td>
+                    </tr>                   
+                </table>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="EventsDragAndDropAPI2">
+        <div>
+            <section>
+                <header>
+                    <h2>Drag and Drop API. События</h2>
+                </header>
+                <table>                  
+                    <tr>
+                        <td><b>dragover</b></td>
+                        <td>Инициируется, когда элемент находится над "принимаемую" область, продолжается пока ее не покинет</td>
+                    </tr>
+                    <tr>
+                        <td><b>drop</b></td>
+                        <td>Инициируется, когда элемент "брошен"</td>
+                    </tr>
+                    <tr>
+                        <td><b>dragend</b></td>
+                        <td>Инициируется в конце перетаскивания</td>
+                    </tr>
+                </table>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="DataTransferDragAndDropAPI">
+        <div>
+            <section>
+                <header>
+                    <h2>Drag and Drop API</h2>
+                </header>
+                <pre style="font-size: 16px;">
+                    <code>document.getElementById("dragElem").addEventListener('dragstart', function(event) {</code>
+                    <code>    event.<mark>dataTransfer.setData</mark>('text/plain', 'Customized text');</code>
+                    <code>    event.<mark>dataTransfer.effectAllowed</mark> = 'copy';</code>
+                    <code>}, false);</code>
+                    <code>document.getElementById("dropZone").addEventListener('dragover', function(event) {</code>
+                    <code>    if(e.preventDefault)</code>
+                    <code>        <mark>e.preventDefault();</mark></code>
+                    <code>     return false;</code>
+                    <code>}, false);</code>
+                    <code>document.getElementById("dropZone").addEventListener('drop', function(event) {</code>                                        
+                    <code>     //обработка </code>
+                    <code>}, false);</code>                                                         
+                </pre>
+            </section>
+        </div>
+    </div>
+    
+    <div class="slide" id="DragAndDropAPI3">
+        <div>
+            <section>
+                <header>
+                    <h2>Drag and Drop API. Пример</h2>
+                </header>
+                <p><a href="http://nettutsplus.s3.amazonaws.com/64_html5dragdrop/demo/index.html" target="_blank">Shopping Cart</a></p>
+            </section>
+        </div>
+    </div>      
+    
+    <div class="slide cover" id="CoverLocalStorage">
+        <div>
+            <section style="background-color: #ffffff;">
+                <header>
+                    <h2 style="text-align: center; font-size: 70px;">Local Storage</h2>
+                </header>
+                <img src="pictures/html5storage.jpg" style="height: 350px; margin-top: 180px;">
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="LocalStorage">
+        <div>
+            <section>
+                <header>
+                    <h2>Local storage API</h2>
+                </header>
+                <ul>
+                    <li><b>Local storage (локальное хранилище)</b> - база данных на стороне клиента, содержащая пары ключ-значение</li>
+                    <li>Большой объем хранилища (ограничивается настройками браузера и вашим HDD)</li>
+                    <li>Не ограничено временем жизни</li>
+                    <li>Offline приложения</li>
+                    <li>Спецификация <a href="http://www.w3.org/TR/webstorage/">http://www.w3.org/TR/webstorage/</a></li>
+                </ul>
+            </section>
+        </div>
+    </div>
+    
+    <div class="slide" id="LocalStorageSupport">
+        <div>
+            <section>
+                <header>
+                    <h2>Local storage. Поддержка</h2>
+                </header>
+                <table>
+                    <tr>
+                        <td><img src="pictures/safari.png"></td>
+                        <td>Safari 4.0+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/ios.png"></td>
+                        <td>iPhone 2+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/android.png"></td>
+                        <td>Android 2+</td>
+                    </tr>                    
+                </table>
+                <table>
+                    <tr>
+                        <td><img src="pictures/ie.png"></td>
+                        <td>Internet Explorer 8+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/ff.png"></td>
+                        <td>Firefox 3.5+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/chrome.png"></td>
+                        <td>Chrome 4+</td>
+                    </tr>
+                    <tr>
+                        <td><img src="pictures/opera.png"></td>
+                        <td>Opera 10.5+</td>
+                    </tr>
+                </table>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="LocalStorageAPI">
+        <div>
+            <section>
+                <header>
+                    <h2>Local storage API</h2>
+                </header>
+                <pre style="font-size: 20px; margin-top: -20px;">
+                    <code>localStorage.setItem('foo', 'bar');</code>
+                    <code>var foo = localStorage.getItem('foo');</code>
+                    <code> </code>
+                    <code>localStorage['foo'] = 'bar';</code>
+                    <code>var foo = localStorage['foo'];</code>
+                    <code>localStorage.removeItem('foo'); //удалит элемент объекта</code>
+                    <code>localStorage.clear(); //удалит все элементы</code>
+                    <code> </code>
+                    <code>localStorage.setItem('user', JSON.stringify({name: "jonh"}));</code>
+                    <code>var user = JSON.parse(localStorage.getItem('user'));</code>
+                </pre>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="LocalStorageAPI2">
+        <div>
+            <section>
+                <header>
+                    <h2>Local storage API. События</h2>
+                </header>
+                <pre>
+                    <code>interface StorageEvent : Event {</code>
+                    <code>    readonly attribute DOMString key;</code>
+                    <code>    readonly attribute DOMString? oldValue;</code>
+                    <code>    readonly attribute DOMString? newValue;</code>
+                    <code>    readonly attribute DOMString url;</code>
+                    <code>    readonly attribute Storage? storageArea;</code>
+                    <code>};</code>
+                </pre>
+            </section>
+        </div>
+    </div>
+
+    <div class="slide" id="LocalStorageAPI3">
+        <div>
+            <section>
+                <header>
+                    <h2>Local storage API. Пример</h2>
+                </header>
+                <p><a href="http://html5demos.com/storage" target="_blank">Storage</a></p>
+            </section>
+        </div>
+    </div>
+
+    <!--<div class="slide cover" id="AppCache">-->
+        <!--<div>-->
+            <!--<section>-->
+                <!--<header>-->
+                    <!--<h2>Applicaton cache</h2>-->
+                <!--</header>-->
+            <!--</section>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="slide cover" id="HistoryAPI">-->
+        <!--<div>-->
+            <!--<section>-->
+                <!--<header>-->
+                    <!--<h2>History API</h2>-->
+                <!--</header>-->
+            <!--</section>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="slide cover" id="EditInPlace">-->
+        <!--<div>-->
+            <!--<section>-->
+                <!--<header>-->
+                    <!--<h2>Edit In Place</h2>-->
+                <!--</header>-->
+            <!--</section>-->
+        <!--</div>-->
+    <!--</div>-->
+
 
     <!--
         Для того, чтобы убрать индикатор прогресса
