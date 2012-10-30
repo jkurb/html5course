@@ -1,0 +1,82 @@
+﻿[
+	{
+		"id":1,
+		"name":"Карп Карпыч",
+		"coorditates":{
+			"latitude":56.634761,
+			"longtitude":47.892854
+		}
+	},
+	{
+		"id":2,
+		"name":"VoffCafe",
+		"coorditates":{
+			"latitude":56.629418,
+			"longtitude":47.893927
+		}
+	},
+	{
+		"id":3,
+		"name":"1 корпус ПГТУ",
+		"coorditates":{
+			"latitude":56.630497,
+			"longtitude":47.89214
+		}
+	},
+	{
+		"id":4,
+		"name":"Стадион 'Дружба'",
+		"coorditates":{
+			"latitude":56.641243,
+			"longtitude":47.875119
+		}
+	},
+	{
+		"id":5,
+		"name":"Сбербанк России",
+		"coorditates":{
+			"latitude":56.641822,
+			"longtitude":47.859583
+		}
+	},
+	{
+		"id":6,
+		"name":"Аэропорт",
+		"coorditates":{
+			"latitude":56.700168,
+			"longtitude":47.906955
+		}
+	},
+	{
+		"id":7,
+		"name":"Паб Бульдог",
+		"coorditates":{
+			"latitude":56.63404,
+			"longtitude":47.899279
+		}
+	},
+	{
+		"id":8,
+		"name":"Почта 424036",
+		"coorditates":{
+			"latitude":56.645871,
+			"longtitude":47.894002
+		}
+	},
+	{
+		"id":9,
+		"name":"Мегастрой",
+		"coorditates":{
+			"latitude":56.632699,
+			"longtitude":47.932346
+		}
+	},
+	{
+		"id":10,
+		"name":"Византия-GYM",
+		"coorditates":{
+			"latitude":56.627649,
+			"longtitude":47.924826
+		}
+	}
+]
